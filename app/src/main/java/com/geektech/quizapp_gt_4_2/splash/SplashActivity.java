@@ -18,7 +18,12 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         img =findViewById(R.id.splash_img);
-        new Handler().postDelayed(()->MainActivity.start(SplashActivity.this),1_000);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                MainActivity.start(SplashActivity.this);
+                finish();
+            }
+        },1_000);
     }
-
 }
