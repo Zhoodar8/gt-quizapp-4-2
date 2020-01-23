@@ -15,16 +15,14 @@ public class MainViewModel extends ViewModel {
         Log.d("ololo", "View model create");
         message.setValue("Hello Observer");
     }
-
     public void onLoginClick() {
 
     }
-
-    public void countPlus() {
+    public void onIncrementClick() {
             countList.setValue(count++);
     }
 
-    public void countMinus() {
+    public void decrement() {
         countList.setValue(count--);
     }
 

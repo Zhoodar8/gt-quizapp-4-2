@@ -38,7 +38,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public static void start(Context context){
-        context.startActivity(new Intent(context, MainActivity.class));
+        Intent intent = new Intent(context,MainActivity.class);
+        context.startActivity(intent);
+
     }
 
     private void setUpbottomNavigation() {
@@ -59,10 +61,6 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
-        setUpviewpagerListener();
-    }
-
-    private void setUpviewpagerListener() {
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -92,12 +90,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
     private void iniViews() {
         mViewPager = findViewById(R.id.main_view_pager);
         mBottomNavigation = findViewById(R.id.bottom_navigation);
     }
-
 
     private class MainPagerAdapter extends FragmentPagerAdapter {
 

@@ -35,14 +35,15 @@ public class MainFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initViews(view);
-        initButtonsListener();
     }
 
-    private void initButtonsListener() {
+    private void initViews(View view) {
+        btn_plus = view.findViewById(R.id.btn_plus);
+        btn_minus = view.findViewById(R.id.btn_minus);
         btn_plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mViewModel.countPlus();
+                mViewModel.onIncrementClick();
                 Toast.makeText(getContext(),"PLUS", Toast.LENGTH_SHORT).show();
             }
         });
@@ -50,16 +51,11 @@ public class MainFragment extends Fragment {
         btn_minus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mViewModel.countMinus();
+                mViewModel.decrement();
                 Toast.makeText(getContext(),"MINUS", Toast.LENGTH_SHORT).show();
 
             }
         });
-    }
-
-    private void initViews(View view) {
-        btn_plus = view.findViewById(R.id.btn_plus);
-        btn_minus = view.findViewById(R.id.btn_minus);
     }
 
     @Override
@@ -75,5 +71,4 @@ public class MainFragment extends Fragment {
         });
         mViewModel.onLoginClick();
     }
-
 }
