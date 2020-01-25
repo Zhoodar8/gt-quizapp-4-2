@@ -8,22 +8,22 @@ import android.os.Handler;
 import android.widget.ImageView;
 
 import com.geektech.quizapp_gt_4_2.R;
+import com.geektech.quizapp_gt_4_2.core.CoreActivity;
 import com.geektech.quizapp_gt_4_2.main.MainActivity;
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends CoreActivity {
     private ImageView img;
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_splash;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
         img =findViewById(R.id.splash_img);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                MainActivity.start(SplashActivity.this);
-                finish();
-            }
-        },1_000);
+        MainActivity.start(SplashActivity.this);
+        finish();
     }
 }

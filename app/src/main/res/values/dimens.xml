@@ -3,4 +3,23 @@
     <dimen name="txt_m_size">24sp</dimen>
     <dimen name="txt_s_size">20sp</dimen>
     <dimen name="margin_top_m">20dp</dimen>
+    <dimen name="img_quiz_margin_top">89dp</dimen>
+    <dimen name="txt_question_amount_size">12sp</dimen>
+    <dimen name="txt_q_amount_margin_start">76dp</dimen>
+    <dimen name="txt_q_amount_marginTop">203dp</dimen>
+    <dimen name="txt_q_count_size">15sp</dimen>
+    <dimen name="txt_q_count_marginStart">8dp</dimen>
+    <dimen name="seekbar_marginTop">21dp</dimen>
+    <dimen name="btn_start_size">15sp</dimen>
+    <dimen name="btn_start_marginTop">85dp</dimen>
+    <dimen name="txt_q_count_marginTop">36dp</dimen>
+    <dimen name="q_category_marginTop">39dp</dimen>
+    <dimen name="spinner_cat_marginTop">8dp</dimen>
+    <dimen name="spinner_diff_marginTop">8dp</dimen>
+    <dimen name="txt_question_diff_marginTop">21dp</dimen>
+    <dimen name="txt_question_diff_size">12sp</dimen>
+    <dimen name="txt_quiz_main_marginTop">28dp</dimen>
+    <dimen name="txt_quiz_main_marginStart">16dp</dimen>
+    <dimen name="history_txt_marginTop">28dp</dimen>
+    <dimen name="history_txt_marginStart">16dp</dimen>
 </resources>

@@ -1,34 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".main.MainFragment">
-    
-    <Button
-        android:id="@+id/btn_plus"
+
+    <TextView
+        android:id="@+id/txt_quiz_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/plus"
-        android:textSize="@dimen/txt_s_size"
+        android:text="@string/quiz_main_txt"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/txt_quiz_main_marginTop"
+        android:layout_marginStart="@dimen/txt_quiz_main_marginStart"
+        tools:targetApi="LOLLIPOP"
+        style="@style/Tittle_text_style"/>
+
+    <ImageView
+        android:id="@+id/img_quiz_app"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/img_quiz_margin_top"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_main_img_quiz_app" />
+
+
+    <TextView
+        android:id="@+id/txt_question_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/txt_q_amount_marginTop"
+        android:layout_marginStart="@dimen/txt_q_amount_margin_start"
+        android:text="@string/question_amount"
+        android:textSize="@dimen/txt_question_amount_size"
+        android:textColor="@color/colorGrey_light"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/txt_q_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_q_count"
+        android:textSize="@dimen/txt_q_count_size"
+        android:textColor="@color/colorDark_purple"
+        app:layout_constraintTop_toBottomOf="@+id/img_quiz_app"
+        android:layout_marginTop="@dimen/txt_q_count_marginTop"
+        app:layout_constraintStart_toEndOf="@+id/txt_question_amount"
+        android:layout_marginStart="@dimen/txt_q_count_marginStart"/>
+
+
+    <SeekBar
+        android:id="@+id/seek_bar"
+        android:layout_width="240dp"
+        android:layout_height="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/txt_q_count"
+        app:layout_constraintStart_toStartOf="@+id/txt_question_amount"
+        android:layout_marginTop="@dimen/seekbar_marginTop"/>
+
+
+    <TextView
+        android:id="@+id/q_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/seek_bar"
+        app:layout_constraintStart_toStartOf="@+id/seek_bar"
+        android:text="@string/category_q"
+        android:layout_marginTop="@dimen/q_category_marginTop"
+        android:textSize="@dimen/txt_question_amount_size"
+        android:textColor="@color/colorGrey_light"/>
+
+
+    <Spinner
+        android:id="@+id/spinner_category"
+        android:layout_width="240dp"
+        android:layout_height="48dp"
+        app:layout_constraintTop_toBottomOf="@+id/q_category"
+        app:layout_constraintStart_toStartOf="@+id/q_category"
+        android:layout_marginTop="@dimen/spinner_cat_marginTop"
+        />
+
+
+    <TextView
+        android:id="@+id/txt_question_difficulty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/spinner_category"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_category"
+        android:layout_marginTop="@dimen/txt_question_diff_marginTop"
+        android:text="@string/difficulty_q"
+        android:textSize="@dimen/txt_question_diff_size"
+        android:textColor="@color/colorGrey_light"/>
+
+    <Spinner
+        android:id="@+id/spinner_difficulty"
+        android:layout_width="240dp"
+        android:layout_height="48dp"
+        app:layout_constraintStart_toStartOf="@+id/txt_question_difficulty"
+        app:layout_constraintTop_toBottomOf="@+id/txt_question_difficulty"
+        android:layout_marginTop="@dimen/spinner_diff_marginTop"
         />
 
     <Button
-        android:id="@+id/btn_minus"
-        android:layout_marginTop="@dimen/margin_top_m"
-        android:text="@string/minus"
-        android:textSize="@dimen/txt_s_size"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/btn_plus"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
+        android:id="@+id/btn_start"
+        android:layout_width="200dp"
+        android:layout_height="48dp"
+        app:layout_constraintEnd_toEndOf="@+id/spinner_difficulty"
+        app:layout_constraintStart_toStartOf="@+id/spinner_difficulty"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_difficulty"
+        android:layout_marginTop="@dimen/btn_start_marginTop"
+        android:text="@string/start_btn"
+        android:textSize="@dimen/btn_start_size"
+        android:textColor="@color/colorWhite"
+        android:background="@drawable/bg_btn_start"/>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,22 +13,20 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.geektech.quizapp_gt_4_2.R;
+import com.geektech.quizapp_gt_4_2.core.CoreFragment;
 
-public class HistoryFragment extends Fragment {
+public class HistoryFragment extends CoreFragment {
 
     private HistoryViewModel mViewModel;
+
+    @Override
+    protected int getLayoutID() {
+        return R.layout.history_fragment;
+    }
 
     public static HistoryFragment newInstance() {
         return new HistoryFragment();
     }
-
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        View view= inflater.inflate(R.layout.history_fragment, container, false);
-           return view;
-    }
-
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -36,5 +34,4 @@ public class HistoryFragment extends Fragment {
         mViewModel = ViewModelProviders.of(this).get(HistoryViewModel.class);
         // TODO: Use the ViewModel
     }
-
 }

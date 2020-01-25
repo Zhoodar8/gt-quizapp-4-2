@@ -17,46 +17,27 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.geektech.quizapp_gt_4_2.R;
+import com.geektech.quizapp_gt_4_2.core.CoreFragment;
 
-public class MainFragment extends Fragment {
+public class MainFragment extends CoreFragment {
+    @Override
+    protected int getLayoutID() {
+        return R.layout.main_fragment;
+    }
 
     private MainViewModel mViewModel;
-    private Button btn_plus, btn_minus;
     public static MainFragment newInstance() {
         return new MainFragment();
     }
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        View view =  inflater.inflate(R.layout.main_fragment, container, false);
-          return view;}
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initViews(view);
+
     }
 
-    private void initViews(View view) {
-        btn_plus = view.findViewById(R.id.btn_plus);
-        btn_minus = view.findViewById(R.id.btn_minus);
-        btn_plus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mViewModel.onIncrementClick();
-                Toast.makeText(getContext(),"PLUS", Toast.LENGTH_SHORT).show();
-            }
-        });
 
-        btn_minus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mViewModel.decrement();
-                Toast.makeText(getContext(),"MINUS", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-    }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -71,4 +52,6 @@ public class MainFragment extends Fragment {
         });
         mViewModel.onLoginClick();
     }
+
+
 }

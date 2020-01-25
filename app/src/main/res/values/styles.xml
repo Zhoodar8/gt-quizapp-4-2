@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -6,6 +6,15 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="Tittle_text_style">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor" tools:targetApi="lollipop">@color/colorBlack</item>
+        <item name="android:fontFamily">@font/sfpro_bold</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginTop">28dp</item>
+
     </style>
 
 </resources>

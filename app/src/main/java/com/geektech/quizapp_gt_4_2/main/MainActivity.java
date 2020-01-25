@@ -14,11 +14,12 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.geektech.quizapp_gt_4_2.R;
+import com.geektech.quizapp_gt_4_2.core.CoreActivity;
 import com.geektech.quizapp_gt_4_2.history.HistoryFragment;
 import com.geektech.quizapp_gt_4_2.settings.SettingsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends CoreActivity {
 
     private MainViewModel mViewModel;
     private ViewPager mViewPager;
@@ -26,9 +27,13 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView mBottomNavigation;
 
     @Override
+    protected int getLayoutId() {
+        return R.layout.activity_main;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
         mViewModel = ViewModelProviders.of(this)
                 .get(MainViewModel.class);
         iniViews();
@@ -47,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         mBottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()){
+                switch (menuItem.getItemId()) {
                     case R.id.explore:
                         mViewPager.setCurrentItem(0);
                         break;
@@ -61,15 +66,11 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
-        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
+        mViewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
-                switch (position){
+                //   mBottomNavigation.getMenu().getItem(position).setChecked(true);
+                switch (position) {
                     case 0:
                         mBottomNavigation.getMenu().findItem(R.id.explore).setChecked(true);
                         break;
@@ -83,10 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
-            @Override
-            public void onPageScrollStateChanged(int state) {
 
-            }
         });
     }
 
@@ -127,3 +125,4 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
+
