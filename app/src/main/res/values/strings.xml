@@ -8,7 +8,7 @@
     <string name="category_q">Category</string>
     <string name="difficulty_q">Difficulty</string>
     <string name="start_btn">START</string>
-    <string name="quiz_main_txt">QUIZ</string>
-    <string name="history">HISTORY</string>
-    <string name="settings">SETTINGS</string>
+    <string name="quiz_main_txt">Quiz</string>
+    <string name="history">History</string>
+    <string name="settings">Settings</string>
 </resources>
