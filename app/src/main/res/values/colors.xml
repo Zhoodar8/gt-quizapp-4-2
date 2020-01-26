@@ -3,15 +3,15 @@
     <color name="colorPrimary">#BE52F2</color>
     <color name="colorPrimaryDark">#BE52F2</color>
     <color name="colorAccent">#BE52F2</color>
+    <color name="colorPrimary2">#008577</color>
+    <color name="colorPrimaryDark2">#00574B</color>
+    <color name="colorAccent2">#D81B60</color>
     <color name="colorGrey_light">#A9A9A9</color>
     <color name="colorDark_purple">#3F3356</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBtnStart">#6979F8</color>
     <color name="colorBlack">#000000</color>
-    <color name="colorPrimary2">#008577</color>
-    <color name="colorPrimaryDark2">#00574B</color>
-    <color name="colorAccent2">#D81B60</color>
-    <color name="colorSeekBar">#D2CFCF</color>
+    <color name="colorSeekBar">#BE52F2</color>
 
 
 

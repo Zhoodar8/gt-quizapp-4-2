@@ -19,7 +19,6 @@
     <dimen name="txt_question_diff_marginTop">21dp</dimen>
     <dimen name="txt_question_diff_size">12sp</dimen>
     <dimen name="txt_quiz_main_marginTop">32dp</dimen>
-    <dimen name="txt_quiz_main_marginStart">16dp</dimen>
-    <dimen name="history_txt_marginTop">28dp</dimen>
-    <dimen name="history_txt_marginStart">16dp</dimen>
+    <dimen name="txt_quiz_main_marginStart">32dp</dimen>
+
 </resources>

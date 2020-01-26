@@ -64,6 +64,7 @@
         android:layout_marginTop="@dimen/seekbar_marginTop"
         android:background="@drawable/bg_seek_bar"
         android:thumb="@drawable/bg_thumb"
+        android:outlineAmbientShadowColor="@color/colorSeekBar"
         />
 
 

@@ -14,7 +14,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:text="@string/settings"
         style="@style/Tittle_text_style"
-        android:layout_marginTop="@dimen/history_txt_marginTop"
-        android:layout_marginStart="@dimen/history_txt_marginStart"/>
+        android:layout_marginTop="@dimen/txt_quiz_main_marginTop"
+        android:layout_marginStart="@dimen/txt_quiz_main_marginStart"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

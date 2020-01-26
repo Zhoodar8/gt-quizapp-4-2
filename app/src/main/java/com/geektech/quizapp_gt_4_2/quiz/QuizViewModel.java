@@ -1,4 +1,4 @@
-package com.geektech.quizapp_gt_4_2.quiz.QuizAdapter;
+package com.geektech.quizapp_gt_4_2.quiz;
 
 import androidx.lifecycle.ViewModel;
 
