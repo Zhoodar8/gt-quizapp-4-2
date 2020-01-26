@@ -23,7 +23,13 @@ public class SplashActivity extends CoreActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         img =findViewById(R.id.splash_img);
-        MainActivity.start(SplashActivity.this);
-        finish();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                MainActivity.start(SplashActivity.this);
+                finish();
+            }
+        },1000);
+
     }
 }
