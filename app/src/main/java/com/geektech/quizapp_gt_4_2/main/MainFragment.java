@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.geektech.quizapp_gt_4_2.R;
 import com.geektech.quizapp_gt_4_2.core.CoreFragment;
+import com.geektech.quizapp_gt_4_2.interface_modification.OnSimpleSeekBarChangeListener;
 
 public class MainFragment extends CoreFragment {
     @Override
@@ -43,25 +44,14 @@ public class MainFragment extends CoreFragment {
         textQuestionCount = view.findViewById(R.id.txt_q_count);
         seekBar.setProgress(0);
         seekBar.setMax(50);
-        seekBar.setPadding(21,0,21,0);
-        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @SuppressLint("SetTextI18n")
+        seekBar.setPadding(21, 0, 21, 0);
+        seekBar.setOnSeekBarChangeListener(new OnSimpleSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                     textQuestionCount.setText(""+progress);
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
+                super.onProgressChanged(seekBar, progress, fromUser);
+                textQuestionCount.setText("" + progress);
             }
         });
-
     }
 
 
