@@ -11,4 +11,15 @@
     <string name="quiz_main_txt">Quiz</string>
     <string name="history">History</string>
     <string name="settings">Settings</string>
+    <string-array name="spinner_diff">
+        <item>All</item>
+        <item>Easy</item>
+        <item>Medium</item>
+        <item>Hard</item>
+    </string-array>
+
+    <string-array name="spinner_category">
+        <item>All</item>
+
+    </string-array>
 </resources>
