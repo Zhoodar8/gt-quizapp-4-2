@@ -4,13 +4,26 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="question_amount">Questions amount:</string>
-    <string name="txt_q_count">10</string>
+    <string name="txt_q_count">1</string>
     <string name="category_q">Category</string>
     <string name="difficulty_q">Difficulty</string>
     <string name="start_btn">START</string>
     <string name="quiz_main_txt">Quiz</string>
     <string name="history">History</string>
     <string name="settings">Settings</string>
+    <string name="mythology">Mythology</string>
+    <string name="_5_10">5/10</string>
+    <string name="vh_txt">According to Greek Mythology, Zeus can control lightning.</string>
+    <string name="viewholder_txt">What is the largest city and commercial capital of Sri Lanka?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="skip">Skip</string>
+    <string name="geography">Geography</string>
+    <string name="america">America</string>
+    <string name="austria">Austria</string>
+    <string name="france">France</string>
+    <string name="colombia">Colombia</string>
+
     <string-array name="spinner_diff">
         <item>All</item>
         <item>Easy</item>

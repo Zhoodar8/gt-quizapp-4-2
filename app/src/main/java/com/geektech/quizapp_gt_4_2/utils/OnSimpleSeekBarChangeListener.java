@@ -1,4 +1,4 @@
-package com.geektech.quizapp_gt_4_2.interface_modification;
+package com.geektech.quizapp_gt_4_2.utils;
 
 import android.widget.SeekBar;
 

@@ -13,13 +13,44 @@
 
     </style>
 
-    <style name="Tittle_text_style">
+    <style name="Tittle_text_style" parent="SF_Pro_Bold">
         <item name="android:textSize">24sp</item>
         <item name="android:textColor" tools:targetApi="lollipop">@color/colorBlack</item>
-        <item name="android:fontFamily">@font/sfpro_bold</item>
         <item name="android:layout_marginStart">16dp</item>
         <item name="android:layout_marginTop">28dp</item>
 
     </style>
+
+    <style name="SF_Pro_Bold">
+        <item name="android:fontFamily">@font/sfpro_bold</item>
+    </style>
+
+    <style name="VH_Tittle_Txt_Style" parent="SF_Pro_dis_semi_bold">
+        <item name="android:textSize">17sp</item>
+
+    </style>
+
+    <style name="SF_Pro_dis_regular">
+        <item name="android:fontFamily">@font/sf_pro_display_regular</item>
+    </style>
+
+    <style name="VH_Txt_Style" parent="SF_Pro_dis_regular" >
+        <item name="android:textSize">20sp</item>
+    </style>
+
+
+    <style name="SF_Pro_dis_semi_bold">
+
+        <item name="android:fontFamily">@font/sf_pro_display_semibold</item>
+    </style>
+
+
+    <style name="txt_regular_style">
+        <item name="android:fontFamily">@font/sf_pro_display_regular</item>
+    </style>
+
+
+
+
 
 </resources>

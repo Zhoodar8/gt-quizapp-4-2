@@ -3,25 +3,19 @@ package com.geektech.quizapp_gt_4_2.main;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.geektech.quizapp_gt_4_2.R;
 import com.geektech.quizapp_gt_4_2.core.CoreFragment;
-import com.geektech.quizapp_gt_4_2.interface_modification.OnSimpleSeekBarChangeListener;
+import com.geektech.quizapp_gt_4_2.utils.OnSimpleSeekBarChangeListener;
 
 public class MainFragment extends CoreFragment {
     @Override
@@ -42,8 +36,6 @@ public class MainFragment extends CoreFragment {
         super.onViewCreated(view, savedInstanceState);
         seekBar = view.findViewById(R.id.seek_bar);
         textQuestionCount = view.findViewById(R.id.txt_q_count);
-        seekBar.setProgress(0);
-        seekBar.setMax(50);
         seekBar.setPadding(21, 0, 21, 0);
         seekBar.setOnSeekBarChangeListener(new OnSimpleSeekBarChangeListener() {
             @Override
@@ -61,7 +53,7 @@ public class MainFragment extends CoreFragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(getActivity())
                 .get(MainViewModel.class);
-        mViewModel.message.observe(this, new Observer<String>() {
+        mViewModel.message.observe(getActivity(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
                 Log.d("ololo", s);

@@ -36,6 +36,7 @@
         android:layout_marginTop="@dimen/txt_q_amount_marginTop"
         android:layout_marginStart="@dimen/txt_q_amount_margin_start"
         android:text="@string/question_amount"
+        style="@style/txt_regular_style"
         android:textSize="@dimen/txt_question_amount_size"
         android:textColor="@color/colorGrey_light"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,21 +45,23 @@
 
     <TextView
         android:id="@+id/txt_q_count"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/txt_q_count"
-        android:textSize="@dimen/txt_q_count_size"
-        android:textColor="@color/colorDark_purple"
-        app:layout_constraintTop_toBottomOf="@+id/img_quiz_app"
+        android:layout_width="5dp"
+        android:layout_height="13dp"
+        android:layout_marginStart="@dimen/txt_q_count_marginStart"
         android:layout_marginTop="@dimen/txt_q_count_marginTop"
+        android:text="@string/txt_q_count"
+        android:textColor="@color/colorDark_purple"
+        android:textSize="@dimen/txt_q_count_size"
         app:layout_constraintStart_toEndOf="@+id/txt_question_amount"
-        android:layout_marginStart="@dimen/txt_q_count_marginStart"/>
+        app:layout_constraintTop_toBottomOf="@+id/img_quiz_app" />
 
 
     <SeekBar
         android:id="@+id/seek_bar"
         android:layout_width="240dp"
         android:layout_height="30dp"
+        android:max="50"
+        android:progress="1"
         app:layout_constraintTop_toBottomOf="@+id/txt_q_count"
         app:layout_constraintStart_toStartOf="@+id/txt_question_amount"
         android:layout_marginTop="@dimen/seekbar_marginTop"
@@ -77,6 +80,7 @@
         android:text="@string/category_q"
         android:layout_marginTop="@dimen/q_category_marginTop"
         android:textSize="@dimen/txt_question_amount_size"
+        style="@style/txt_regular_style"
         android:textColor="@color/colorGrey_light"/>
 
 
@@ -100,6 +104,7 @@
         android:layout_marginTop="@dimen/txt_question_diff_marginTop"
         android:text="@string/difficulty_q"
         android:textSize="@dimen/txt_question_diff_size"
+        style="@style/txt_regular_style"
         android:textColor="@color/colorGrey_light"/>
 
     <Spinner
