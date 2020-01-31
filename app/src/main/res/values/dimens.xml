@@ -36,5 +36,11 @@
     <dimen name="viewholder_btn_marginBottom">4dp</dimen>
     <dimen name="vh_q_txt_size">20sp</dimen>
     <dimen name="quiz_txt_size">17sp</dimen>
+    <dimen name="card_txt_size">17sp</dimen>
+    <dimen name="card_txt_size_answers">13sp</dimen>
+    <dimen name="recycler_marginTop">30dp</dimen>
+    <dimen name="card_txt_date">11sp</dimen>
+    <dimen name="card_img_marginTop">6dp</dimen>
+    <dimen name="card_txt_marginTop">20dp</dimen>
 
 </resources>

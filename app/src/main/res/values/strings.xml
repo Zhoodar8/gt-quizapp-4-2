@@ -23,6 +23,10 @@
     <string name="austria">Austria</string>
     <string name="france">France</string>
     <string name="colombia">Colombia</string>
+    <string name="category_mixed">Category: Mixed</string>
+    <string name="correct_answers">Correct answers: 8/10</string>
+    <string name="difficulty_all">Difficulty: All</string>
+    <string name="card_date">12  january 2020 20:30</string>
 
     <string-array name="spinner_diff">
         <item>All</item>

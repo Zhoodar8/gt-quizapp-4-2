@@ -20,6 +20,7 @@ import android.widget.TextView;
 import com.geektech.quizapp_gt_4_2.R;
 import com.geektech.quizapp_gt_4_2.core.CoreFragment;
 import com.geektech.quizapp_gt_4_2.quiz.QuizActivity;
+import com.geektech.quizapp_gt_4_2.utils.OnSimpleItemSelectedListener;
 import com.geektech.quizapp_gt_4_2.utils.OnSimpleSeekBarChangeListener;
 
 public class MainFragment extends CoreFragment {
@@ -40,7 +41,6 @@ public class MainFragment extends CoreFragment {
         return new MainFragment();
     }
 
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -51,8 +51,6 @@ public class MainFragment extends CoreFragment {
         spinnerDiff = view.findViewById(R.id.spinner_difficulty);
         seekBar.setPadding(21, 0, 21, 0);
         viewsListener();
-
-
     }
 
     private void viewsListener() {
@@ -79,8 +77,6 @@ public class MainFragment extends CoreFragment {
         });
     }
 
-
-
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -95,10 +91,10 @@ public class MainFragment extends CoreFragment {
         mViewModel.onLoginClick();
     }
     private void getSpinerPosition() {
-
-        spinnerDiff.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spinnerDiff.setOnItemSelectedListener(new OnSimpleItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                super.onItemSelected(parent, view, position, id);
                 switch (position) {
                     case 1:
                         difficult = null;
@@ -114,14 +110,9 @@ public class MainFragment extends CoreFragment {
                         break;
                 }
             }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-
         });
+    }
 
 
     }
-}
+
