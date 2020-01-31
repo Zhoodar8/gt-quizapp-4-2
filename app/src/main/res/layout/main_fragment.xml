@@ -16,7 +16,7 @@
         android:layout_marginTop="@dimen/txt_quiz_main_marginTop"
         android:layout_marginStart="@dimen/txt_quiz_main_marginStart"
         tools:targetApi="LOLLIPOP"
-        style="@style/Tittle_text_style"/>
+        style="@style/BoldText"/>
 
     <ImageView
         android:id="@+id/img_quiz_app"
@@ -36,7 +36,7 @@
         android:layout_marginTop="@dimen/txt_q_amount_marginTop"
         android:layout_marginStart="@dimen/txt_q_amount_margin_start"
         android:text="@string/question_amount"
-        style="@style/txt_regular_style"
+        style="@style/RegularText"
         android:textSize="@dimen/txt_question_amount_size"
         android:textColor="@color/colorGrey_light"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,10 +45,11 @@
 
     <TextView
         android:id="@+id/txt_q_count"
-        android:layout_width="5dp"
-        android:layout_height="13dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/txt_q_count_marginStart"
         android:layout_marginTop="@dimen/txt_q_count_marginTop"
+        style="@style/RegularText"
         android:text="@string/txt_q_count"
         android:textColor="@color/colorDark_purple"
         android:textSize="@dimen/txt_q_count_size"
@@ -80,7 +81,7 @@
         android:text="@string/category_q"
         android:layout_marginTop="@dimen/q_category_marginTop"
         android:textSize="@dimen/txt_question_amount_size"
-        style="@style/txt_regular_style"
+        style="@style/RegularText"
         android:textColor="@color/colorGrey_light"/>
 
 
@@ -104,7 +105,7 @@
         android:layout_marginTop="@dimen/txt_question_diff_marginTop"
         android:text="@string/difficulty_q"
         android:textSize="@dimen/txt_question_diff_size"
-        style="@style/txt_regular_style"
+        style="@style/RegularText"
         android:textColor="@color/colorGrey_light"/>
 
     <Spinner

@@ -1,7 +1,6 @@
 package com.geektech.quizapp_gt_4_2.main;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -46,26 +45,12 @@ public class MainActivity extends CoreActivity {
         mAdapter = new MainPagerAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(mAdapter);
         setUpbottomNavigation();
-        App.iQuizApiClient.getQuestions(new IQuizApiClient.QuiestionsCallback() {
-            @Override
-            public void onSuccess(List<Question> questions) {
-                for(Question question: questions){
-                    Log.e("---------", question.getQuestion());
-                }
-            }
-
-            @Override
-            public void onFailure(Exception e) {
-                Log.e("=======",e.getMessage());
-
-            }
-        });
     }
+
 
     public static void start(Context context){
         Intent intent = new Intent(context,MainActivity.class);
         context.startActivity(intent);
-
     }
 
     private void setUpbottomNavigation() {
@@ -147,6 +132,15 @@ public class MainActivity extends CoreActivity {
         public int getCount() {
             return 3;
         }
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        if (mViewPager.getCurrentItem() != 0){
+            mViewPager.setCurrentItem(0);
+        }else {
+        super.onBackPressed();}
     }
 }
 

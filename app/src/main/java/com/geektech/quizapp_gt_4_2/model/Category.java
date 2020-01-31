@@ -4,11 +4,11 @@ import com.google.gson.annotations.SerializedName;
 
 public class Category {
     @SerializedName("id")
-    private int id;
+    private Integer id;
     @SerializedName("name")
     private String name;
 
-    public Category(int id, String name) {
+    public Category(Integer id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -17,7 +17,7 @@ public class Category {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

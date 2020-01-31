@@ -8,31 +8,34 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.geektech.quizapp_gt_4_2.R;
+import com.geektech.quizapp_gt_4_2.model.Question;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class QuizAdapter extends RecyclerView.Adapter<QuizViewHolder> {
+    List<Question> list = new ArrayList<>();
+
+    public void update(List<Question>list){
+        this.list = list;
+        notifyDataSetChanged();
+    }
     @NonNull
     @Override
     public QuizViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
-        View v  = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_quiz_view_holder, parent,false);
-        QuizViewHolder quizViewHolder = new QuizViewHolder(v);
-
-
-
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_quiz_view_holder_multiple_version,parent,false);
+                .inflate(R.layout.item_quiz_view_holder,parent,false);
         QuizViewHolder viewHolder = new QuizViewHolder(view);
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull QuizViewHolder holder, int position) {
-
+         holder.onBind(list.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return list.size();
     }
 }

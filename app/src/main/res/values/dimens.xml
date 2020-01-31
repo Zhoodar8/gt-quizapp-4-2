@@ -11,7 +11,7 @@
     <dimen name="txt_q_count_marginStart">8dp</dimen>
     <dimen name="seekbar_marginTop">21dp</dimen>
     <dimen name="btn_start_size">15sp</dimen>
-    <dimen name="btn_start_marginTop">85dp</dimen>
+    <dimen name="btn_start_marginTop">65dp</dimen>
     <dimen name="txt_q_count_marginTop">36dp</dimen>
     <dimen name="q_category_marginTop">39dp</dimen>
     <dimen name="spinner_cat_marginTop">8dp</dimen>
@@ -23,13 +23,18 @@
     <dimen name="vh_txt_tittle_marginTop">25dp</dimen>
     <dimen name="vh_progressbar_marginTop">30dp</dimen>
     <dimen name="vh_txt_count_size">12sp</dimen>
-    <dimen name="vh_txt_count_marginTop">6dp</dimen>
+    <dimen name="vh_txt_count_marginTop">10dp</dimen>
     <dimen name="vh_txt_marginTop">135dp</dimen>
     <dimen name="vh_btn_marginTop">80dp</dimen>
     <dimen name="vh_btn_false_MarginTop">38dp</dimen>
     <dimen name="vh_btn_true_false_size">14sp</dimen>
     <dimen name="vh_btn_skip_marginTop">170dp</dimen>
-    <dimen name="viewholder_btn_marginTop">5dp</dimen>
+    <dimen name="viewholder_btn_marginTop">8dp</dimen>
     <dimen name="vh_btn_skip_marginBottom">85dp</dimen>
+    <dimen name="quiz_recycler_marginTop">45dp</dimen>
+    <dimen name="progress_bar_marginTop">35dp</dimen>
+    <dimen name="viewholder_btn_marginBottom">4dp</dimen>
+    <dimen name="vh_q_txt_size">20sp</dimen>
+    <dimen name="quiz_txt_size">17sp</dimen>
 
 </resources>

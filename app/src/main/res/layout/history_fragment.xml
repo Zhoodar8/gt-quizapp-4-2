@@ -13,7 +13,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:text="@string/history"
-        style="@style/Tittle_text_style"
+        style="@style/BoldText"
         android:layout_marginTop="@dimen/txt_quiz_main_marginTop"
         android:layout_marginStart="@dimen/txt_quiz_main_marginStart"/>
 
