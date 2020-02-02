@@ -58,5 +58,6 @@
     <dimen name="card_marginStart">16dp</dimen>
     <dimen name="card_marginTop">60dp</dimen>
     <dimen name="card_marginEnd">16dp</dimen>
+    <dimen name="card_btn_txt_size">13sp</dimen>
 
 </resources>

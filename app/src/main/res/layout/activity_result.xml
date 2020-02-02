@@ -28,7 +28,8 @@
         app:layout_constraintEnd_toEndOf="@+id/result_tittle"
         app:layout_constraintStart_toStartOf="@+id/result_tittle"
         app:layout_constraintTop_toBottomOf="@+id/result_tittle"
-        app:srcCompat="@drawable/ic_done" />
+        app:srcCompat="@drawable/ic_done"
+         />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
@@ -156,8 +157,9 @@
         android:background="@drawable/bg_btn_finish"
         android:text="@string/finish"
         android:textColor="@color/colorWhite"
-        android:textSize="13sp"
+        android:textSize="@dimen/card_btn_txt_size"
         android:textStyle="normal"
+        android:onClick="onClickFinish"
         app:layout_constraintEnd_toEndOf="@+id/card_view"
         app:layout_constraintStart_toStartOf="@+id/card_view"
         app:layout_constraintTop_toBottomOf="@+id/card_view"
