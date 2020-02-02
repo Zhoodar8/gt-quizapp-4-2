@@ -1,88 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="20dp">
+    android:layout_margin="@dimen/card_margin">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/vh_layout_item"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="10dp"
-        android:paddingBottom="16dp"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        >
-
+        android:paddingStart="@dimen/card_cons_padding_Start"
+        android:paddingTop="@dimen/card_cons_paddingTop"
+        android:paddingEnd="@dimen/card_cons_padding_End"
+        android:paddingBottom="@dimen/card_cons_padding_Bottom">
 
         <TextView
             android:id="@+id/card_category"
+            style="@style/SemiBoldText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/category_mixed"
-            android:textSize="@dimen/card_txt_size"
-            app:layout_constraintTop_toTopOf="parent"
             android:textColor="@color/colorCard_Tittle"
-            style="@style/SemiBoldText"
-            app:layout_constraintStart_toStartOf="parent"/>
+            android:textSize="@dimen/card_txt_size"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <TextView
             android:id="@+id/card_correct_answer"
+            style="@style/RegularText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/correct_answers"
-            android:textSize="@dimen/card_txt_size_answers"
             android:layout_marginTop="@dimen/card_txt_marginTop"
-            style="@style/RegularText"
+            android:text="@string/correct_answers"
             android:textColor="@color/colorCard_Txt"
-            app:layout_constraintTop_toBottomOf="@+id/card_category"
-            app:layout_constraintStart_toStartOf="@+id/card_category"/>
+            android:textSize="@dimen/card_txt_size_answers"
+            app:layout_constraintStart_toStartOf="@+id/card_category"
+            app:layout_constraintTop_toBottomOf="@+id/card_category" />
 
         <TextView
             android:id="@+id/card_difficulty"
+            style="@style/RegularText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/card_txt_marginTop"
-            style="@style/RegularText"
-            android:textColor="@color/colorCard_Txt"
             android:text="@string/difficulty_all"
+            android:textColor="@color/colorCard_Txt"
             android:textSize="@dimen/card_txt_size_answers"
-            app:layout_constraintTop_toBottomOf="@+id/card_correct_answer"
-            app:layout_constraintStart_toStartOf="@+id/card_correct_answer"/>
-
+            app:layout_constraintStart_toStartOf="@+id/card_correct_answer"
+            app:layout_constraintTop_toBottomOf="@+id/card_correct_answer" />
 
         <TextView
             android:id="@+id/card_date"
+            style="@style/RegularText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/RegularText"
-            android:textColor="@color/colorCard_Txt"
             android:text="@string/card_date"
+            android:textColor="@color/colorCard_Txt"
             android:textSize="@dimen/card_txt_date"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <ImageView
             android:id="@+id/card_img"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="@dimen/card_img_marginTop"
-            app:srcCompat="@drawable/ic_card_menu"/>
-
-
-
-
-
-
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_card_menu" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
 
 
 </androidx.cardview.widget.CardView>

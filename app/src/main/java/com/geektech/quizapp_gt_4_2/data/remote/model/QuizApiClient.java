@@ -1,18 +1,15 @@
-package com.geektech.quizapp_gt_4_2.data.remote;
-
-import androidx.lifecycle.MutableLiveData;
+package com.geektech.quizapp_gt_4_2.data.remote.model;
 
 import com.geektech.quizapp_gt_4_2.core.CoreCallback;
-import com.geektech.quizapp_gt_4_2.data.remote.response.QuizCategoryResponse;
-import com.geektech.quizapp_gt_4_2.data.remote.response.QuizGlobalResponse;
-import com.geektech.quizapp_gt_4_2.data.remote.response.QuizQuestinResponse;
-import com.geektech.quizapp_gt_4_2.model.Category;
-import com.geektech.quizapp_gt_4_2.model.Global;
-import com.geektech.quizapp_gt_4_2.model.Question;
-
-import java.util.List;
+import com.geektech.quizapp_gt_4_2.data.remote.model.IQuizApiClient;
+import com.geektech.quizapp_gt_4_2.data.remote.model.QuizCategoryResponse;
+import com.geektech.quizapp_gt_4_2.data.remote.model.QuizGlobalResponse;
+import com.geektech.quizapp_gt_4_2.data.remote.model.QuizQuestinResponse;
+import com.geektech.quizapp_gt_4_2.data.remote.model.QuizQuestionsCount;
 
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
@@ -23,12 +20,10 @@ public class QuizApiClient implements IQuizApiClient {
             .baseUrl("https://opentdb.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build();
-
     QuizApi client = retrofit.create(QuizApi.class);
 
-
     @Override
-    public MutableLiveData<Question> getQuestions(int amount, Integer category, String difficulty, QuiestionCallback callback) {
+    public void getQuestions(int amount, Integer category, String difficulty, QuiestionCallback callback) {
         Call<QuizQuestinResponse> call = client.getQuestions(amount,
                 category,
                 difficulty);
@@ -40,14 +35,14 @@ public class QuizApiClient implements IQuizApiClient {
 
             @Override
             public void onFailure(Exception e) {
-
+              callback.onFailure(e);
             }
         });
-        return null;
+
     }
 
     @Override
-    public MutableLiveData<Category> getCategories(CategoryCallback categoryCallback) {
+    public void getCategories(CategoryCallback categoryCallback) {
        Call<QuizCategoryResponse> call = client.getCategories();
        call.enqueue(new CoreCallback<QuizCategoryResponse>() {
            @Override
@@ -57,14 +52,14 @@ public class QuizApiClient implements IQuizApiClient {
 
            @Override
            public void onFailure(Exception e) {
-
+                categoryCallback.onFailure(e);
            }
        });
-       return null;
+
     }
 
     @Override
-    public MutableLiveData<Global> getGlobal(GlobalCallback globalCallback) {
+    public void getGlobal(GlobalCallback globalCallback) {
       Call<QuizGlobalResponse> call = client.getGlobals();
       call.enqueue(new CoreCallback<QuizGlobalResponse>() {
           @Override
@@ -74,10 +69,26 @@ public class QuizApiClient implements IQuizApiClient {
 
           @Override
           public void onFailure(Exception e) {
-
+                globalCallback.onFailure(e);
           }
       });
-      return null;
+
+    }
+
+    @Override
+    public void getQuestionsCount(Integer category, CountCallbak countCallbak) {
+        Call<QuizQuestionsCount> call =client.getQuestionsCount(category);
+        call.enqueue(new CoreCallback<QuizQuestionsCount>() {
+            @Override
+            public void onSuccess(QuizQuestionsCount result) {
+                countCallbak.onSuccess(result);
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+               countCallbak.onFailure(e);
+            }
+        });
     }
 
 
@@ -93,6 +104,11 @@ public class QuizApiClient implements IQuizApiClient {
 
         @GET("api_category.php")
         Call<QuizCategoryResponse> getCategories();
+
+        @GET("api_count.php")
+        Call<QuizQuestionsCount> getQuestionsCount(
+                @Query("category")Integer category
+        );
     }
 
 

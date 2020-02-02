@@ -19,10 +19,12 @@ import android.widget.TextView;
 import com.geektech.quizapp_gt_4_2.App;
 import com.geektech.quizapp_gt_4_2.R;
 import com.geektech.quizapp_gt_4_2.core.CoreActivity;
-import com.geektech.quizapp_gt_4_2.data.remote.IQuizApiClient;
+import com.geektech.quizapp_gt_4_2.data.remote.model.IQuizApiClient;
+import com.geektech.quizapp_gt_4_2.main.MainActivity;
 import com.geektech.quizapp_gt_4_2.model.Category;
 import com.geektech.quizapp_gt_4_2.model.Question;
-import com.geektech.quizapp_gt_4_2.quiz.quiz_recycler.QuizAdapter;
+import com.geektech.quizapp_gt_4_2.quiz.recycler.QuizAdapter;
+import com.geektech.quizapp_gt_4_2.result.ResultActivity;
 
 import java.util.List;
 
@@ -37,6 +39,10 @@ public class QuizActivity extends CoreActivity {
     private Integer category;
     private String difficulty;
     private QuizViewModel quizViewModel;
+    private static String EXTRA_AMOUNT = "amount";
+    private static String EXTRA_CATEGORY = "category";
+    private static String EXTRA_DIFFICULTY = "difficulty";
+
 
     @SuppressLint("ClickableViewAccessibility")
     private void initViews() {
@@ -54,20 +60,18 @@ public class QuizActivity extends CoreActivity {
                 return true;
             }
         });
-
     }
-
 
     @Override
     protected int getLayoutId() {
         return R.layout.activity_quiz;
     }
 
-    public static void start(Context context, int amount, int category, String difficulty){
+    public static void start(Context context, int amount, int category, String difficulty) {
         Intent intent = new Intent(context, QuizActivity.class);
-        intent.putExtra("seekbar", amount);
-        intent.putExtra("diff", difficulty);
-        intent.putExtra("cat", category);
+        intent.putExtra(EXTRA_AMOUNT, amount);
+        intent.putExtra(EXTRA_DIFFICULTY, difficulty);
+        intent.putExtra(EXTRA_CATEGORY, category);
         context.startActivity(intent);
     }
 
@@ -77,31 +81,39 @@ public class QuizActivity extends CoreActivity {
         quizViewModel = ViewModelProviders.of(this)
                 .get(QuizViewModel.class);
         initViews();
-        amount = getIntent().getIntExtra("seekbar", 0);
-        category = getIntent().getIntExtra("cat",0);
-
-        difficulty = getIntent().getStringExtra("diff");
-
-        Log.e("--------","QuizActivity  " +difficulty+" " + amount);
-        if (category == 0){
+        amount = getIntent().getIntExtra(EXTRA_AMOUNT, 0);
+        category = getIntent().getIntExtra(EXTRA_CATEGORY, 0);
+        difficulty = getIntent().getStringExtra(EXTRA_DIFFICULTY);
+        Log.e("--------", "QuizActivity  " + difficulty + " " + amount);
+        if (category == 0) {
             category = null;
         }
-        quizViewModel.getQuestion(amount,category,difficulty);
+        quizViewModel.getQuestion(amount, category, difficulty);
         showData();
         setCategory();
+        quizViewModel.position.observe(this, new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                recyclerView.scrollToPosition(integer);
+                progressBar.setProgress(integer);
+                progressBar.setMax(amount);
+                tvCountQuestion.setText(integer + "/" + amount);
 
+
+            }
+        });
     }
 
     private void setCategory() {
-        App.iQuizApiClient.getCategories(new IQuizApiClient.CategoryCallback() {
+        App.iQuizApiClient.getCategories( new IQuizApiClient.CategoryCallback() {
             @Override
-            public void onSuccess(List<Category> categories) {
-
+            public void onSuccess(List<Category> result) {
+                tvTittleQuestion.setText(result.get(0).getName());
             }
 
             @Override
             public void onFailure(Exception e) {
-
+                Log.e("---------", "setCategory " + e.getLocalizedMessage());
             }
         });
     }
@@ -111,10 +123,26 @@ public class QuizActivity extends CoreActivity {
             @Override
             public void onChanged(List<Question> questions) {
                 adapter.update(questions);
-                Log.e("-----------", "Adapter"+ questions);
+                Log.e("-----------", "Adapter" + questions);
             }
         });
     }
 
+    public void onClickSkip(View view) {
+        if (progressBar.getProgress() < amount) {
+            quizViewModel.onIncrementClick();
+        } else {
+            ResultActivity.startResult(QuizActivity.this);
+            finish();
+        }
+    }
 
+    public void onClickBack(View view) {
+        if (progressBar.getProgress() != 0) {
+            quizViewModel.onDecrementClick();
+        } else {
+            MainActivity.start(QuizActivity.this);
+            finish();
+        }
+    }
 }

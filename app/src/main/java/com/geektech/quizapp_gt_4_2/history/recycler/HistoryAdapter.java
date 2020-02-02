@@ -1,15 +1,13 @@
-package com.geektech.quizapp_gt_4_2.history.history_recycler;
+package com.geektech.quizapp_gt_4_2.history.recycler;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.geektech.quizapp_gt_4_2.R;
-import com.geektech.quizapp_gt_4_2.model.Question;
 
 import java.util.ArrayList;
 

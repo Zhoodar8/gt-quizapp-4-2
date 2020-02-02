@@ -14,8 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".result.ResultActivity"/>
-        <activity android:name=".quiz.QuizActivity" />
+        <activity android:name=".result.ResultActivity"
+            android:launchMode="singleTop"/>
+        <activity android:name=".quiz.QuizActivity"
+            android:launchMode="singleTop"/>
         <activity android:name=".splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

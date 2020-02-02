@@ -38,9 +38,16 @@
     <dimen name="quiz_txt_size">17sp</dimen>
     <dimen name="card_txt_size">17sp</dimen>
     <dimen name="card_txt_size_answers">13sp</dimen>
-    <dimen name="recycler_marginTop">30dp</dimen>
+    <dimen name="recycler_marginTop">28dp</dimen>
     <dimen name="card_txt_date">11sp</dimen>
     <dimen name="card_img_marginTop">6dp</dimen>
     <dimen name="card_txt_marginTop">20dp</dimen>
+    <dimen name="card_margin">20dp</dimen>
+    <dimen name="card_cons_paddingTop">10dp</dimen>
+    <dimen name="card_cons_padding_Bottom">16dp</dimen>
+    <dimen name="card_cons_padding_Start">16dp</dimen>
+    <dimen name="card_cons_padding_End">16dp</dimen>
+    <dimen name="btn_back_marginTop">15dp</dimen>
+    <dimen name="btn_back_marginStart">18dp</dimen>
 
 </resources>
