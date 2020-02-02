@@ -71,11 +71,12 @@
         android:layout_width="90dp"
         android:layout_height="40dp"
         android:layout_marginBottom="@dimen/vh_btn_skip_marginBottom"
-        android:background="@color/colorSkip_Btn"
+        android:background="@drawable/bg_btn_skip"
         android:onClick="onClickSkip"
         android:text="@string/skip"
         android:textColor="@color/colorWhite"
         android:textSize="@dimen/vh_btn_true_false_size"
+        android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -125,11 +125,12 @@
         app:layout_constraintEnd_toEndOf="@+id/spinner_difficulty"
         app:layout_constraintStart_toStartOf="@+id/spinner_difficulty"
         app:layout_constraintTop_toBottomOf="@+id/spinner_difficulty"
-        android:layout_marginTop="@dimen/btn_start_marginTop"
         android:text="@string/start_btn"
         android:textSize="@dimen/btn_start_size"
+        android:textStyle="normal"
         android:textColor="@color/colorWhite"
-        android:background="@drawable/bg_btn_start"/>
+        android:background="@drawable/bg_btn_start"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 
 

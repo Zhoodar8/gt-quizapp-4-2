@@ -2,6 +2,7 @@ package com.geektech.quizapp_gt_4_2.quiz;
 
 import android.util.Log;
 
+import androidx.annotation.Nullable;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -15,6 +16,9 @@ import com.geektech.quizapp_gt_4_2.model.Question;
 import java.util.List;
 
 public class QuizViewModel extends ViewModel {
+    // reUse
+     private IQuizApiClient iQuizApiClient = App.iQuizApiClient;
+
 
     MutableLiveData<List<Question>> question = new MutableLiveData<>();
     MutableLiveData<Integer> position =  new MutableLiveData<>();
@@ -24,7 +28,9 @@ public class QuizViewModel extends ViewModel {
         counter = 1;
     }
 
-    public void getQuestion(int amount, Integer category, String difficulty){
+    public void getQuestion(@Nullable int amount, Integer category, String difficulty){
+          //reUse
+       // iQuizApiClient.getQuestions();
         App.iQuizApiClient.getQuestions(amount, category, difficulty, new IQuizApiClient.QuiestionCallback() {
             @Override
             public void onSuccess(List<Question> result) {

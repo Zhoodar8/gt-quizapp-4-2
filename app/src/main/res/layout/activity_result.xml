@@ -6,4 +6,162 @@
     android:layout_height="match_parent"
     tools:context=".result.ResultActivity">
 
+    <TextView
+        android:id="@+id/result_tittle"
+        style="@style/SemiBoldText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/result_tittle_marginTop"
+        android:text="@string/result"
+        android:textColor="@color/colorDarkness_purple"
+        android:textSize="@dimen/result_tittle_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/result_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/card_image_marginTop"
+        app:layout_constraintEnd_toEndOf="@+id/result_tittle"
+        app:layout_constraintStart_toStartOf="@+id/result_tittle"
+        app:layout_constraintTop_toBottomOf="@+id/result_tittle"
+        app:srcCompat="@drawable/ic_done" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/card_height"
+        android:layout_marginStart="@dimen/card_marginStart"
+        android:layout_marginTop="@dimen/card_marginTop"
+        android:layout_marginEnd="@dimen/card_marginEnd"
+        app:layout_constraintEnd_toEndOf="@+id/result_img"
+        app:layout_constraintStart_toStartOf="@+id/result_img"
+        app:layout_constraintTop_toBottomOf="@+id/result_img">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/card_tittle"
+                style="@style/BoldText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/category_mixed"
+                android:textColor="@color/colorCard_Tittle"
+                android:textSize="@dimen/card_tittle_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/card_diff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/difficulty"
+                android:textSize="@dimen/card_txt_size"
+                android:textColor="@color/colorCard_Txt"
+                style="@style/RegularText"
+                android:includeFontPadding="false"
+                android:layout_marginTop="@dimen/card_corr_answer_marginTop"
+                app:layout_constraintTop_toBottomOf="@+id/card_tittle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/card_correct_answer"/>
+
+            <TextView
+                android:id="@+id/card_diff_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/all"
+                android:textSize="@dimen/card_txt_size"
+                android:textColor="@color/colorCard_Txt"
+                style="@style/Bold"
+                android:layout_marginTop="@dimen/card_txt_percent_marginTop"
+                app:layout_constraintTop_toBottomOf="@+id/card_diff"
+                app:layout_constraintStart_toStartOf="@+id/card_diff"
+                app:layout_constraintEnd_toEndOf="@+id/card_diff"
+                />
+
+            <TextView
+                android:id="@+id/card_correct_answer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/card_tittle"
+                app:layout_constraintStart_toStartOf="@+id/card_tittle"
+                app:layout_constraintEnd_toEndOf="@+id/card_tittle"
+                android:textColor="@color/colorCard_Txt"
+                android:layout_marginTop="@dimen/card_corr_answer_marginTop"
+                android:text="@string/correct_answers_card"
+                style="@style/RegularText"
+                android:includeFontPadding="false"
+                android:textSize="@dimen/card_txt_size"
+                />
+
+
+            <TextView
+                android:id="@+id/card_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/corr_answer"
+                android:textSize="@dimen/card_txt_size"
+                android:layout_marginTop="@dimen/card_txt_percent_marginTop"
+                android:textColor="@color/colorCard_Txt"
+               style="@style/Bold"
+                app:layout_constraintTop_toBottomOf="@+id/card_correct_answer"
+                app:layout_constraintStart_toStartOf="@+id/card_correct_answer"
+                app:layout_constraintEnd_toEndOf="@id/card_correct_answer"/>
+
+            <TextView
+                android:id="@+id/card_result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/result_card"
+                android:textSize="@dimen/card_txt_size"
+                style="@style/RegularText"
+                android:includeFontPadding="false"
+                android:textColor="@color/colorCard_Txt"
+                app:layout_constraintTop_toBottomOf="@+id/card_tittle"
+                app:layout_constraintStart_toEndOf="@id/card_correct_answer"
+                android:layout_marginTop="@dimen/card_corr_answer_marginTop"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/card_result_percent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/card_result"
+                app:layout_constraintStart_toStartOf="@+id/card_result"
+                app:layout_constraintEnd_toEndOf="@+id/card_result"
+                android:text="@string/fifty"
+                android:textSize="@dimen/card_txt_size"
+                android:textColor="@color/colorCard_Txt"
+                android:layout_marginTop="@dimen/card_txt_percent_marginTop"
+                style="@style/Bold"/>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <Button
+        android:id="@+id/result_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_btn_finish"
+        android:text="@string/finish"
+        android:textColor="@color/colorWhite"
+        android:textSize="13sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="@+id/card_view"
+        app:layout_constraintStart_toStartOf="@+id/card_view"
+        app:layout_constraintTop_toBottomOf="@+id/card_view"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,7 +11,6 @@
     <dimen name="txt_q_count_marginStart">8dp</dimen>
     <dimen name="seekbar_marginTop">21dp</dimen>
     <dimen name="btn_start_size">15sp</dimen>
-    <dimen name="btn_start_marginTop">65dp</dimen>
     <dimen name="txt_q_count_marginTop">36dp</dimen>
     <dimen name="q_category_marginTop">39dp</dimen>
     <dimen name="spinner_cat_marginTop">8dp</dimen>
@@ -36,7 +35,7 @@
     <dimen name="viewholder_btn_marginBottom">4dp</dimen>
     <dimen name="vh_q_txt_size">20sp</dimen>
     <dimen name="quiz_txt_size">17sp</dimen>
-    <dimen name="card_txt_size">17sp</dimen>
+    <dimen name="card_txt_size">12sp</dimen>
     <dimen name="card_txt_size_answers">13sp</dimen>
     <dimen name="recycler_marginTop">28dp</dimen>
     <dimen name="card_txt_date">11sp</dimen>
@@ -49,5 +48,15 @@
     <dimen name="card_cons_padding_End">16dp</dimen>
     <dimen name="btn_back_marginTop">15dp</dimen>
     <dimen name="btn_back_marginStart">18dp</dimen>
+    <dimen name="result_tittle_size">17sp</dimen>
+    <dimen name="result_tittle_marginTop">35dp</dimen>
+    <dimen name="card_corr_answer_marginTop">30dp</dimen>
+    <dimen name="card_txt_percent_marginTop">6dp</dimen>
+    <dimen name="card_tittle_size">17sp</dimen>
+    <dimen name="card_image_marginTop">25dp</dimen>
+    <dimen name="card_height">174dp</dimen>
+    <dimen name="card_marginStart">16dp</dimen>
+    <dimen name="card_marginTop">60dp</dimen>
+    <dimen name="card_marginEnd">16dp</dimen>
 
 </resources>

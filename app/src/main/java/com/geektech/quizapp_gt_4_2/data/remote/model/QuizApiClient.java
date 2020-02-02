@@ -1,15 +1,8 @@
 package com.geektech.quizapp_gt_4_2.data.remote.model;
 
 import com.geektech.quizapp_gt_4_2.core.CoreCallback;
-import com.geektech.quizapp_gt_4_2.data.remote.model.IQuizApiClient;
-import com.geektech.quizapp_gt_4_2.data.remote.model.QuizCategoryResponse;
-import com.geektech.quizapp_gt_4_2.data.remote.model.QuizGlobalResponse;
-import com.geektech.quizapp_gt_4_2.data.remote.model.QuizQuestinResponse;
-import com.geektech.quizapp_gt_4_2.data.remote.model.QuizQuestionsCount;
 
 import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
@@ -20,7 +13,7 @@ public class QuizApiClient implements IQuizApiClient {
             .baseUrl("https://opentdb.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build();
-    QuizApi client = retrofit.create(QuizApi.class);
+    TriviaApi client = retrofit.create(TriviaApi.class);
 
     @Override
     public void getQuestions(int amount, Integer category, String difficulty, QuiestionCallback callback) {
@@ -92,7 +85,7 @@ public class QuizApiClient implements IQuizApiClient {
     }
 
 
-    private interface QuizApi {
+    private interface TriviaApi {
        // EndPoint
         @GET("api.php")
         Call<QuizQuestinResponse> getQuestions(@Query("amount")int amount,

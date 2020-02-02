@@ -27,6 +27,15 @@
     <string name="correct_answers">Correct answers: 8/10</string>
     <string name="difficulty_all">Difficulty: All</string>
     <string name="card_date">12  january 2020 20:30</string>
+    <string name="result">Result</string>
+    <string name="finish">Finish</string>
+    <string name="difficulty">Difficulty:</string>
+    <string name="all">All</string>
+    <string name="correct_answers_card">Correct Answers :</string>
+    <string name="category_mixed">Category: Mixed</string>
+    <string name="corr_answer">5/10</string>
+    <string name="result_card">Result :</string>
+    <string name="fifty">50%</string>
 
     <string-array name="spinner_diff">
         <item>All</item>
