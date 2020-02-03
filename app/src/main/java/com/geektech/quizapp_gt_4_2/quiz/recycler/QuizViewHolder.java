@@ -1,5 +1,6 @@
 package com.geektech.quizapp_gt_4_2.quiz.recycler;
 
+import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -44,7 +45,8 @@ public class QuizViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void onBind(Question question) {
-        tvHolder.setText(question.getQuestion());
+        tvHolder.setText( Html.fromHtml(
+                question.getQuestion()));
 
     }
 }
