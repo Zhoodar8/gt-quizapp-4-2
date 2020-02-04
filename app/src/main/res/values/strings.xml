@@ -35,6 +35,11 @@
     <string name="corr_answer">5/10</string>
     <string name="result_card">Result :</string>
     <string name="fifty">50%</string>
+    <string name="share_this_app">Share this App</string>
+    <string name="rate_us">Rate us</string>
+    <string name="leave_feedback">Leave feedback</string>
+    <string name="clear_history">Clear history</string>
+    <string name="version">v 1.0.0</string>
 
     <string-array name="spinner_diff">
         <item>All</item>

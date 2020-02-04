@@ -59,5 +59,11 @@
     <dimen name="card_marginTop">60dp</dimen>
     <dimen name="card_marginEnd">16dp</dimen>
     <dimen name="card_btn_txt_size">13sp</dimen>
+    <dimen name="version_txt_size">12sp</dimen>
+    <dimen name="view_marginTop">50dp</dimen>
+    <dimen name="txt_settings_size">18sp</dimen>
+    <dimen name="txt_settings_marginStart">30dp</dimen>
+    <dimen name="version_marginTop">50dp</dimen>
+    <dimen name="settings_img_marginEnd">25dp</dimen>
 
 </resources>
