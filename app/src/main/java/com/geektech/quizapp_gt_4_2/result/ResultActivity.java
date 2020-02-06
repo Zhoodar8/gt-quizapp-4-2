@@ -22,6 +22,8 @@ public class ResultActivity extends CoreActivity {
     private TextView tvResultDifficulty;
     private TextView tvResultScore;
     private TextView tvResult;
+    private static String ID_QUESTION= "id";
+    private int idQquestion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +32,14 @@ public class ResultActivity extends CoreActivity {
         tvResultDifficulty = findViewById(R.id.card_diff_all);
         tvResultScore = findViewById(R.id.card_score);
         tvResult = findViewById(R.id.card_result_percent);
+        idQquestion = getIntent().getIntExtra(ID_QUESTION,0);
 
 
     }
 
-    public static void startResult(Context context){
+    public static void startResult(Context context, int id){
         Intent intent = new Intent(context, ResultActivity.class);
+        intent.putExtra(ID_QUESTION, id);
         context.startActivity(intent);
     }
 

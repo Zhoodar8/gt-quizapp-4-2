@@ -13,11 +13,18 @@ import com.geektech.quizapp_gt_4_2.model.Question;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("ALL")
 public class QuizAdapter extends RecyclerView.Adapter<QuizViewHolder> {
-    List<Question> list = new ArrayList<>();
+   private List<Question> list = new ArrayList<>();
+    private QuizViewHolder.Listener listener;
+
+    public QuizAdapter(QuizViewHolder.Listener listener) {
+        this.listener = listener;
+    }
 
     public void update(List<Question>list){
-        this.list = list;
+        this.list.clear();
+        this.list.addAll(list);
         notifyDataSetChanged();
     }
     @NonNull
@@ -25,13 +32,15 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizViewHolder> {
     public QuizViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_quiz_view_holder,parent,false);
-        QuizViewHolder viewHolder = new QuizViewHolder(view);
+        QuizViewHolder viewHolder = new QuizViewHolder(view, listener);
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull QuizViewHolder holder, int position) {
-         holder.onBind(list.get(position));
+        if (holder instanceof QuizViewHolder){
+            ((QuizViewHolder) holder).onBind(list.get(position));
+        }
     }
 
     @Override

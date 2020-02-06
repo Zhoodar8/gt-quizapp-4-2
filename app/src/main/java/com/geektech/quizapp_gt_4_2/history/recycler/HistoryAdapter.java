@@ -8,28 +8,20 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.geektech.quizapp_gt_4_2.R;
+import com.geektech.quizapp_gt_4_2.model.QuizResult;
 
 import java.util.ArrayList;
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder> {
 
-    ArrayList<String> list = new ArrayList<>();
+    ArrayList<QuizResult> list = new ArrayList<>();
 
-    public void update(ArrayList<String>list){
-        this.list= list;
-        list.add("Heloo");
-        list.add("Heloo");
-        list.add("Heloo");
-        list.add("Heloo");
-        list.add("Heloo");
-        list.add("Heloo");
-        list.add("Heloo");
-        list.add("Heloo");
-        list.add("Heloo");
-        list.add("Heloo");
-        list.add("Heloo");
+    public void update(ArrayList<QuizResult>history){
+        this.list.clear();
+        this.list.addAll(history);
         notifyDataSetChanged();
     }
+
 
 
     @NonNull
@@ -59,7 +51,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
             super(itemView);
         }
 
-        public void onBind(String string) {
+        public void onBind(QuizResult result) {
         }
     }
 }

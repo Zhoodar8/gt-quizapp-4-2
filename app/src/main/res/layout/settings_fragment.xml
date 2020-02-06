@@ -42,6 +42,7 @@
         android:gravity="center|start"
         android:textColor="@color/Dark_grey"
         android:textSize="@dimen/txt_settings_size"
+        android:background="?selectableItemBackground"
         android:layout_marginStart="@dimen/txt_settings_marginStart"
         style="@style/RegularText"
         />
@@ -81,6 +82,7 @@
             android:gravity="center|start"
             android:textColor="@color/Dark_grey"
             android:textSize="@dimen/txt_settings_size"
+            android:background="?selectableItemBackground"
             android:layout_marginStart="@dimen/txt_settings_marginStart"
             style="@style/RegularText"
             />
@@ -118,6 +120,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/leave_feedback"
+            android:background="?selectableItemBackground"
             android:gravity="center|start"
             android:textColor="@color/Dark_grey"
             android:textSize="@dimen/txt_settings_size"
@@ -158,6 +161,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/clear_history"
+            android:background="?selectableItemBackground"
             android:gravity="center|start"
             android:textColor="@color/Dark_grey"
             android:textSize="@dimen/txt_settings_size"

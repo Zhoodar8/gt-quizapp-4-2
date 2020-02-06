@@ -1,5 +1,6 @@
 package com.geektech.quizapp_gt_4_2.data.remote.model;
 
+import com.geektech.quizapp_gt_4_2.App;
 import com.geektech.quizapp_gt_4_2.core.CoreCallback;
 
 import retrofit2.Call;
@@ -24,6 +25,7 @@ public class QuizApiClient implements IQuizApiClient {
             @Override
             public void onSuccess(QuizQuestinResponse result) {
                 callback.onSuccess(result.getResults());
+
             }
 
             @Override

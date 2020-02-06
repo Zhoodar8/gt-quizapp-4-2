@@ -18,25 +18,26 @@ import java.util.List;
 public class QuizViewModel extends ViewModel {
     // reUse
      private IQuizApiClient iQuizApiClient = App.iQuizApiClient;
-
-
     MutableLiveData<List<Question>> question = new MutableLiveData<>();
     MutableLiveData<Integer> position =  new MutableLiveData<>();
+    MutableLiveData<Boolean> finish = new MutableLiveData<>();
+    private List<Question> mQuestion;
     private int counter;
 
     public QuizViewModel(){
-        counter = 1;
+        counter = 0;
     }
 
     public void getQuestion(@Nullable int amount, Integer category, String difficulty){
           //reUse
        // iQuizApiClient.getQuestions();
-        App.iQuizApiClient.getQuestions(amount, category, difficulty, new IQuizApiClient.QuiestionCallback() {
+        App.quizRepository.getQuestions(amount, category, difficulty, new IQuizApiClient.QuiestionCallback() {
             @Override
             public void onSuccess(List<Question> result) {
                 Log.e("--------","QuizViewModel" + result.toString());
-                question.setValue(result);
-                position.setValue(1);
+                mQuestion =result;
+                question.setValue(mQuestion);
+                position.setValue(0);
             }
             @Override
             public void onFailure(Exception e) {
@@ -87,13 +88,42 @@ public class QuizViewModel extends ViewModel {
         });
     }
 
-     public void  onIncrementClick(){
-        position.setValue(++counter);
+
+    private int getCorrectAnswersAmount() {
+        //TODO:
+        return 0;
+    }
+
+    void finishQuiz() {
+        //TODO:
+    }
+
+
+
+
+
+    public void onSkipClick(){
+        if (position != null ) {
+            position.setValue(++counter);
+        }else {
+
+        }
      }
 
-     public void onDecrementClick(){
-        position.setValue(--counter);
+     public void onBackPressed(){
+         Integer currentPosition = position.getValue();
+         if (currentPosition != null && currentPosition ==0 ){
+             finish.setValue(true);
+         }else if (currentPosition != null && currentPosition > 0){
+             position.setValue(--counter);
+         }
      }
 
-
+     void onAnswerClick(int position, int selectedAnswerPosition) {
+        if (mQuestion.size() >position && position >= 0) {
+            mQuestion.get(position).setSelectedAnswerPosition(selectedAnswerPosition);
+            question.setValue(mQuestion);
+            onSkipClick();
+        }
+    }
 }

@@ -20,21 +20,22 @@ import com.geektech.quizapp_gt_4_2.App;
 import com.geektech.quizapp_gt_4_2.R;
 import com.geektech.quizapp_gt_4_2.core.CoreActivity;
 import com.geektech.quizapp_gt_4_2.data.remote.model.IQuizApiClient;
-import com.geektech.quizapp_gt_4_2.main.MainActivity;
 import com.geektech.quizapp_gt_4_2.model.Category;
 import com.geektech.quizapp_gt_4_2.model.Question;
 import com.geektech.quizapp_gt_4_2.quiz.recycler.QuizAdapter;
-import com.geektech.quizapp_gt_4_2.result.ResultActivity;
+import com.geektech.quizapp_gt_4_2.quiz.recycler.QuizViewHolder;
 
 import java.util.List;
 
-public class QuizActivity extends CoreActivity {
+public class QuizActivity extends CoreActivity implements QuizViewHolder.Listener {
+
+    //region Static
     private TextView tvTittleQuestion;
     private TextView tvCountQuestion;
     private ProgressBar progressBar;
     private Button buttonSkip;
     private RecyclerView recyclerView;
-    private QuizAdapter adapter = new QuizAdapter();
+
     private int amount;
     private Integer category;
     private String difficulty;
@@ -42,7 +43,8 @@ public class QuizActivity extends CoreActivity {
     private static String EXTRA_AMOUNT = "amount";
     private static String EXTRA_CATEGORY = "category";
     private static String EXTRA_DIFFICULTY = "difficulty";
-
+    private QuizAdapter adapter;
+//endregion
 
     @SuppressLint("ClickableViewAccessibility")
     private void initViews() {
@@ -51,6 +53,7 @@ public class QuizActivity extends CoreActivity {
         progressBar = findViewById(R.id.quiz_progess_bar);
         buttonSkip = findViewById(R.id.quiz_btn_answer);
         recyclerView = findViewById(R.id.quiz_recycler);
+         adapter = new QuizAdapter(this::onAnswerClick);
         LinearLayoutManager manager = new LinearLayoutManager(QuizActivity.this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(manager);
         recyclerView.setAdapter(adapter);
@@ -96,10 +99,17 @@ public class QuizActivity extends CoreActivity {
             public void onChanged(Integer integer) {
                 recyclerView.scrollToPosition(integer);
                 progressBar.setProgress(integer);
-                progressBar.setMax(amount);
-                tvCountQuestion.setText(integer + "/" + amount);
+                progressBar.setMax(amount-1);
+                tvCountQuestion.setText(integer+1 + "/" + amount);
+                Log.e("------------", integer+"quiz activ");
 
+            }
+        });
 
+        quizViewModel.finish.observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                finish();
             }
         });
     }
@@ -129,20 +139,14 @@ public class QuizActivity extends CoreActivity {
     }
 
     public void onClickSkip(View view) {
-        if (progressBar.getProgress() < amount) {
-            quizViewModel.onIncrementClick();
-        } else {
-            ResultActivity.startResult(QuizActivity.this);
-            finish();
-        }
+            quizViewModel.onSkipClick();
     }
 
     public void onClickBack(View view) {
-        if (progressBar.getProgress() != 0) {
-            quizViewModel.onDecrementClick();
-        } else {
-            MainActivity.start(QuizActivity.this);
-            finish();
-        }
+        quizViewModel.onBackPressed();
+    }
+    @Override
+    public void onAnswerClick(int position, int selectedAnswerPosition) {
+           quizViewModel.onAnswerClick(position,selectedAnswerPosition);
     }
 }

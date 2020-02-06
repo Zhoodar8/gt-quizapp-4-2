@@ -1,5 +1,6 @@
 package com.geektech.quizapp_gt_4_2.history;
 
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
@@ -14,15 +15,17 @@ import android.view.View;
 import com.geektech.quizapp_gt_4_2.R;
 import com.geektech.quizapp_gt_4_2.core.CoreFragment;
 import com.geektech.quizapp_gt_4_2.history.recycler.HistoryAdapter;
+import com.geektech.quizapp_gt_4_2.model.QuizResult;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HistoryFragment extends CoreFragment {
 
     private HistoryViewModel mViewModel;
     private RecyclerView recyclerView;
     HistoryAdapter adapter = new HistoryAdapter();
-    ArrayList<String> list = new ArrayList<>();
+    ArrayList<QuizResult> list = new ArrayList<>();
 
     @Override
     protected int getLayoutID() {
@@ -39,13 +42,22 @@ public class HistoryFragment extends CoreFragment {
         recyclerView =view.findViewById(R.id.history_recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(adapter);
-        adapter.update(list);
+
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(HistoryViewModel.class);
+
+        mViewModel.history.observe(getActivity(), new Observer<List<QuizResult>>() {
+            @Override
+            public void onChanged(List<QuizResult> quizResults) {
+                list.clear();
+                list.addAll(quizResults);
+                adapter.update(list);
+            }
+        });
         // TODO: Use the ViewModel
     }
 }

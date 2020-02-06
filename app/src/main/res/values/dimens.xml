@@ -65,5 +65,6 @@
     <dimen name="txt_settings_marginStart">30dp</dimen>
     <dimen name="version_marginTop">50dp</dimen>
     <dimen name="settings_img_marginEnd">25dp</dimen>
+    <dimen name="item_vh_padding">16dp</dimen>
 
 </resources>

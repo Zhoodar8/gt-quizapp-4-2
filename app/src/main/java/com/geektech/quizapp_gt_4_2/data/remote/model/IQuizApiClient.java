@@ -19,7 +19,7 @@ public interface IQuizApiClient {
     void getGlobal(GlobalCallback globalCallback);
     void getQuestionsCount(Integer category, CountCallbak countCallbak);
 
-     interface QuiestionCallback extends BaseCallback<List<Question>> {}
+    interface QuiestionCallback extends BaseCallback<List<Question>> {}
 
     interface CategoryCallback extends BaseCallback<List<Category>> {}
 
