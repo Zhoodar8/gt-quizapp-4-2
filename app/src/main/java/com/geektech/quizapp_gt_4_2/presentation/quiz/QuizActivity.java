@@ -1,4 +1,4 @@
-package com.geektech.quizapp_gt_4_2.quiz;
+package com.geektech.quizapp_gt_4_2.presentation.quiz;
 
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -10,7 +10,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -22,8 +21,9 @@ import com.geektech.quizapp_gt_4_2.core.CoreActivity;
 import com.geektech.quizapp_gt_4_2.data.remote.model.IQuizApiClient;
 import com.geektech.quizapp_gt_4_2.model.Category;
 import com.geektech.quizapp_gt_4_2.model.Question;
-import com.geektech.quizapp_gt_4_2.quiz.recycler.QuizAdapter;
-import com.geektech.quizapp_gt_4_2.quiz.recycler.QuizViewHolder;
+import com.geektech.quizapp_gt_4_2.presentation.quiz.recycler.QuizAdapter;
+import com.geektech.quizapp_gt_4_2.presentation.quiz.recycler.QuizViewHolder;
+import com.geektech.quizapp_gt_4_2.presentation.result.ResultActivity;
 
 import java.util.List;
 
@@ -57,12 +57,7 @@ public class QuizActivity extends CoreActivity implements QuizViewHolder.Listene
         LinearLayoutManager manager = new LinearLayoutManager(QuizActivity.this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(manager);
         recyclerView.setAdapter(adapter);
-        recyclerView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                return true;
-            }
-        });
+        recyclerView.setOnTouchListener((v, event) -> true);
     }
 
     @Override
@@ -94,22 +89,24 @@ public class QuizActivity extends CoreActivity implements QuizViewHolder.Listene
         quizViewModel.getQuestion(amount, category, difficulty);
         showData();
         setCategory();
-        quizViewModel.position.observe(this, new Observer<Integer>() {
-            @Override
-            public void onChanged(Integer integer) {
-                recyclerView.scrollToPosition(integer);
-                progressBar.setProgress(integer);
-                progressBar.setMax(amount-1);
-                tvCountQuestion.setText(integer+1 + "/" + amount);
-                Log.e("------------", integer+"quiz activ");
+        quizViewModel.positionOfQuestion.observe(this, integer -> {
+            recyclerView.scrollToPosition(integer);
+            progressBar.setProgress(integer);
+            progressBar.setMax(amount-1);
+            tvCountQuestion.setText(integer+1 + "/" + amount);
+            Log.e("------------", integer+"quiz activ");
 
-            }
         });
 
-        quizViewModel.finish.observe(this, new Observer<Boolean>() {
+        quizViewModel.finish.observe(this, aBoolean -> finish());
+
+        quizViewModel.finishEvent.observe(this, aVoid -> {
+            finish();
+        });
+        quizViewModel.openResultEvent.observe(this, new Observer<Long>() {
             @Override
-            public void onChanged(Boolean aBoolean) {
-                finish();
+            public void onChanged(Long aLong) {
+                ResultActivity.startResult(QuizActivity.this,aLong);
             }
         });
     }
@@ -148,5 +145,6 @@ public class QuizActivity extends CoreActivity implements QuizViewHolder.Listene
     @Override
     public void onAnswerClick(int position, int selectedAnswerPosition) {
            quizViewModel.onAnswerClick(position,selectedAnswerPosition);
+
     }
 }

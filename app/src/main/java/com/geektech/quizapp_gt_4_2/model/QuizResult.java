@@ -26,25 +26,25 @@ public class QuizResult {
 
    @ColumnInfo(name = "user_time")
    @TypeConverters({TimeConverter.class})
-    private Date userTime;
+    private Date createdAt;
     private String category;
     private String difficulty;
 
-    public QuizResult(int id, List<Question> questions, int correctAnswer, Date userTime, String category, String difficulty) {
+    public QuizResult(int id, List<Question> questions, int correctAnswer, Date createdAt, String category, String difficulty) {
         this.id = id;
         this.questions = questions;
         this.correctAnswer = correctAnswer;
-        this.userTime = userTime;
+        this.createdAt = createdAt;
         this.category = category;
         this.difficulty = difficulty;
     }
 
-    public Date getUserTime() {
-        return userTime;
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public void setUserTime(Date userTime) {
-        this.userTime = userTime;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
     public String getCategory() {
@@ -63,7 +63,7 @@ public class QuizResult {
         this.difficulty = difficulty;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 

@@ -14,19 +14,18 @@ import java.util.List;
 @Dao
 public interface IHistoryStorage {
 
-
     @Insert
-    int save(QuizResult result);
+    long save(QuizResult result);
 
     @Delete
     void delete(QuizResult result);
 
-    @Query("DELETE FROM QuizResult")
+    @Query("DELETE FROM QUIZ_RESULT")
     void deleteAll();
 
-    @Query("SELECT * FROM QuizResult WHERE id=:id")
+    @Query("SELECT * FROM quiz_result WHERE id=:id")
     QuizResult get(int id);
 
-    @Query("SELECT * FROM QuizResult ")
+    @Query("SELECT * FROM QUIZ_RESULT ")
     LiveData<List<QuizResult>> getAll();
 }

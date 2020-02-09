@@ -11,7 +11,7 @@ public class HistoryStorage implements IHistoryStorage {
 
 
     @Override
-    public int save(QuizResult result) {
+    public long save(QuizResult result) {
         return result.id;
     }
 

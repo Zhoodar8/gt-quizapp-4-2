@@ -1,4 +1,4 @@
-package com.geektech.quizapp_gt_4_2.quiz.recycler;
+package com.geektech.quizapp_gt_4_2.presentation.quiz.recycler;
 
 import android.text.Html;
 import android.util.Log;
@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;

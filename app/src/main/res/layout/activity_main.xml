@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".main.MainActivity"
+    tools:context=".presentation.main.MainActivity"
     android:background="@color/colorWhite">
 
     <androidx.viewpager.widget.ViewPager
@@ -22,7 +22,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_navigation"/>
+        app:menu="@menu/bottom_navigation"
+        android:background="@color/colorWhite"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

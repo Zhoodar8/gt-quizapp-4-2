@@ -1,14 +1,17 @@
 package com.geektech.quizapp_gt_4_2.data;
 
+import androidx.lifecycle.LiveData;
+
 import com.geektech.quizapp_gt_4_2.data.remote.model.IQuizApiClient;
 import com.geektech.quizapp_gt_4_2.data.history.IHistoryStorage;
 import com.geektech.quizapp_gt_4_2.model.Question;
+import com.geektech.quizapp_gt_4_2.model.QuizResult;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class QuizRepository {
+public class QuizRepository implements IQuizApiClient, IHistoryStorage {
     private IQuizApiClient apiClient;
     private IHistoryStorage historyStorage;
 
@@ -45,5 +48,45 @@ public class QuizRepository {
         });
 
 
+    }
+
+    @Override
+    public void getCategories(CategoryCallback categoryCallback) {
+
+    }
+
+    @Override
+    public void getGlobal(GlobalCallback globalCallback) {
+
+    }
+
+    @Override
+    public void getQuestionsCount(Integer category, CountCallbak countCallbak) {
+
+    }
+
+    @Override
+    public long save(QuizResult result) {
+        return 0;
+    }
+
+    @Override
+    public void delete(QuizResult result) {
+
+    }
+
+    @Override
+    public void deleteAll() {
+
+    }
+
+    @Override
+    public QuizResult get(int id) {
+        return null;
+    }
+
+    @Override
+    public LiveData<List<QuizResult>> getAll() {
+        return null;
     }
 }

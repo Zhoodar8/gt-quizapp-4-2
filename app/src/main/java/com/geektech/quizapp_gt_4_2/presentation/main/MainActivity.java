@@ -1,4 +1,4 @@
-package com.geektech.quizapp_gt_4_2.main;
+package com.geektech.quizapp_gt_4_2.presentation.main;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -14,8 +14,8 @@ import android.view.MenuItem;
 
 import com.geektech.quizapp_gt_4_2.R;
 import com.geektech.quizapp_gt_4_2.core.CoreActivity;
-import com.geektech.quizapp_gt_4_2.history.HistoryFragment;
-import com.geektech.quizapp_gt_4_2.settings.SettingsFragment;
+import com.geektech.quizapp_gt_4_2.presentation.history.HistoryFragment;
+import com.geektech.quizapp_gt_4_2.presentation.settings.SettingsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends CoreActivity {
@@ -40,7 +40,6 @@ public class MainActivity extends CoreActivity {
         mViewPager.setAdapter(mAdapter);
         setUpbottomNavigation();
     }
-
 
     public static void start(Context context){
         Intent intent = new Intent(context,MainActivity.class);
