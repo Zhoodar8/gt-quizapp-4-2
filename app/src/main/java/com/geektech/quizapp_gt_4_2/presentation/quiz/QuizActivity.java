@@ -15,12 +15,12 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.geektech.quizapp_gt_4_2.App;
 import com.geektech.quizapp_gt_4_2.R;
 import com.geektech.quizapp_gt_4_2.core.CoreActivity;
-import com.geektech.quizapp_gt_4_2.data.remote.model.IQuizApiClient;
+import com.geektech.quizapp_gt_4_2.data.remote.IQuizApiClient;
 import com.geektech.quizapp_gt_4_2.model.Category;
-import com.geektech.quizapp_gt_4_2.model.Question;
 import com.geektech.quizapp_gt_4_2.presentation.quiz.recycler.QuizAdapter;
 import com.geektech.quizapp_gt_4_2.presentation.quiz.recycler.QuizViewHolder;
 import com.geektech.quizapp_gt_4_2.presentation.result.ResultActivity;
@@ -30,30 +30,33 @@ import java.util.List;
 public class QuizActivity extends CoreActivity implements QuizViewHolder.Listener {
 
     //region Static
-    private TextView tvTittleQuestion;
+    private TextView tvQuestionCategory;
     private TextView tvCountQuestion;
     private ProgressBar progressBar;
     private Button buttonSkip;
     private RecyclerView recyclerView;
-
-    private int amount;
-    private Integer category;
-    private String difficulty;
     private QuizViewModel quizViewModel;
+    private LottieAnimationView lottieAnimation;
+
     private static String EXTRA_AMOUNT = "amount";
     private static String EXTRA_CATEGORY = "category";
     private static String EXTRA_DIFFICULTY = "difficulty";
     private QuizAdapter adapter;
+
+    private int amount;
+    private Integer category;
+    private String difficulty;
 //endregion
 
     @SuppressLint("ClickableViewAccessibility")
     private void initViews() {
-        tvTittleQuestion = findViewById(R.id.quiz_text_tittle);
+        lottieAnimation =findViewById(R.id.lottie);
+        tvQuestionCategory = findViewById(R.id.quiz_text_tittle);
         tvCountQuestion = findViewById(R.id.quiz_txt_count);
         progressBar = findViewById(R.id.quiz_progess_bar);
         buttonSkip = findViewById(R.id.quiz_btn_answer);
         recyclerView = findViewById(R.id.quiz_recycler);
-         adapter = new QuizAdapter(this::onAnswerClick);
+        adapter = new QuizAdapter(this::onAnswerClick);
         LinearLayoutManager manager = new LinearLayoutManager(QuizActivity.this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(manager);
         recyclerView.setAdapter(adapter);
@@ -73,6 +76,7 @@ public class QuizActivity extends CoreActivity implements QuizViewHolder.Listene
         context.startActivity(intent);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,57 +90,44 @@ public class QuizActivity extends CoreActivity implements QuizViewHolder.Listene
         if (category == 0) {
             category = null;
         }
-        quizViewModel.getQuestion(amount, category, difficulty);
+        quizViewModel.init(amount, category, difficulty);
         showData();
-        setCategory();
+        quizViewModel.question.observe(this, questions -> {
+            recyclerView.setVisibility(View.VISIBLE);
+            adapter.update(questions);
+
+        });
         quizViewModel.positionOfQuestion.observe(this, integer -> {
+            tvQuestionCategory.setVisibility(View.VISIBLE);
+            tvCountQuestion.setVisibility(View.VISIBLE);
+            lottieAnimation.setVisibility(View.GONE);
+            progressBar.setVisibility(View.VISIBLE);
+            buttonSkip.setVisibility(View.VISIBLE);
+
+            tvQuestionCategory.setText(adapter.getmQuestions().get(integer).getCategory());
+            tvCountQuestion.setText(integer +1 + "/" + amount);
             recyclerView.scrollToPosition(integer);
+         //   recyclerView.smoothScrollToPosition(integer);
             progressBar.setProgress(integer);
             progressBar.setMax(amount-1);
-            tvCountQuestion.setText(integer+1 + "/" + amount);
-            Log.e("------------", integer+"quiz activ");
-
         });
 
         quizViewModel.finish.observe(this, aBoolean -> finish());
-
         quizViewModel.finishEvent.observe(this, aVoid -> {
             finish();
         });
-        quizViewModel.openResultEvent.observe(this, new Observer<Long>() {
-            @Override
-            public void onChanged(Long aLong) {
-                ResultActivity.startResult(QuizActivity.this,aLong);
-            }
-        });
-    }
-
-    private void setCategory() {
-        App.iQuizApiClient.getCategories( new IQuizApiClient.CategoryCallback() {
-            @Override
-            public void onSuccess(List<Category> result) {
-                tvTittleQuestion.setText(result.get(0).getName());
-            }
-
-            @Override
-            public void onFailure(Exception e) {
-                Log.e("---------", "setCategory " + e.getLocalizedMessage());
-            }
-        });
+        quizViewModel.openResultEvent.observe(this, integer ->
+                ResultActivity.startResult(QuizActivity.this,integer));
     }
 
     private void showData() {
-        quizViewModel.question.observe(this, new Observer<List<Question>>() {
-            @Override
-            public void onChanged(List<Question> questions) {
-                adapter.update(questions);
-                Log.e("-----------", "Adapter" + questions);
-            }
+        quizViewModel.question.observe(this, questions -> { adapter.update(questions);
+            Log.e("-----------", "Adapter" + questions);
         });
     }
 
     public void onClickSkip(View view) {
-            quizViewModel.onSkipClick();
+        quizViewModel.onSkipClick();
     }
 
     public void onClickBack(View view) {
@@ -145,6 +136,5 @@ public class QuizActivity extends CoreActivity implements QuizViewHolder.Listene
     @Override
     public void onAnswerClick(int position, int selectedAnswerPosition) {
            quizViewModel.onAnswerClick(position,selectedAnswerPosition);
-
     }
 }

@@ -19,17 +19,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <ImageView
-        android:id="@+id/result_img"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie_res"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/popup"
+        android:visibility="visible"
         android:layout_marginTop="@dimen/card_image_marginTop"
         app:layout_constraintEnd_toEndOf="@+id/result_tittle"
         app:layout_constraintStart_toStartOf="@+id/result_tittle"
-        app:layout_constraintTop_toBottomOf="@+id/result_tittle"
-        app:srcCompat="@drawable/ic_done"
-         />
+        app:layout_constraintTop_toBottomOf="@+id/result_tittle" />
+
+
+<!--    <ImageView-->
+<!--        android:id="@+id/result_img"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="@dimen/card_image_marginTop"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/result_tittle"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/result_tittle"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/result_tittle"-->
+<!--        app:srcCompat="@drawable/ic_done" />-->
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
@@ -38,9 +51,9 @@
         android:layout_marginStart="@dimen/card_marginStart"
         android:layout_marginTop="@dimen/card_marginTop"
         android:layout_marginEnd="@dimen/card_marginEnd"
-        app:layout_constraintEnd_toEndOf="@+id/result_img"
-        app:layout_constraintStart_toStartOf="@+id/result_img"
-        app:layout_constraintTop_toBottomOf="@+id/result_img">
+        app:layout_constraintEnd_toEndOf="@+id/lottie_res"
+        app:layout_constraintStart_toStartOf="@+id/lottie_res"
+        app:layout_constraintTop_toBottomOf="@+id/lottie_res">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -51,8 +64,8 @@
                 style="@style/BoldText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/category_mixed"
                 android:includeFontPadding="false"
+                android:text="@string/category_mixed"
                 android:textColor="@color/colorCard_Tittle"
                 android:textSize="@dimen/card_tittle_size"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -62,88 +75,85 @@
 
             <TextView
                 android:id="@+id/card_diff"
+                style="@style/RegularText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/difficulty"
-                android:textSize="@dimen/card_txt_size"
-                android:textColor="@color/colorCard_Txt"
-                style="@style/RegularText"
-                android:includeFontPadding="false"
                 android:layout_marginTop="@dimen/card_corr_answer_marginTop"
-                app:layout_constraintTop_toBottomOf="@+id/card_tittle"
+                android:includeFontPadding="false"
+                android:text="@string/difficulty"
+                android:textColor="@color/colorCard_Txt"
+                android:textSize="@dimen/card_txt_size"
+                app:layout_constraintEnd_toStartOf="@+id/card_correct_answer"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/card_correct_answer"/>
+                app:layout_constraintTop_toBottomOf="@+id/card_tittle" />
 
             <TextView
                 android:id="@+id/card_diff_all"
+                style="@style/Bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/all"
-                android:textSize="@dimen/card_txt_size"
-                android:textColor="@color/colorCard_Txt"
-                style="@style/Bold"
                 android:layout_marginTop="@dimen/card_txt_percent_marginTop"
-                app:layout_constraintTop_toBottomOf="@+id/card_diff"
-                app:layout_constraintStart_toStartOf="@+id/card_diff"
+                android:text="@string/all"
+                android:textColor="@color/colorCard_Txt"
+                android:textSize="@dimen/card_txt_size"
                 app:layout_constraintEnd_toEndOf="@+id/card_diff"
-                />
+                app:layout_constraintStart_toStartOf="@+id/card_diff"
+                app:layout_constraintTop_toBottomOf="@+id/card_diff" />
 
             <TextView
                 android:id="@+id/card_correct_answer"
+                style="@style/RegularText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/card_tittle"
-                app:layout_constraintStart_toStartOf="@+id/card_tittle"
-                app:layout_constraintEnd_toEndOf="@+id/card_tittle"
-                android:textColor="@color/colorCard_Txt"
                 android:layout_marginTop="@dimen/card_corr_answer_marginTop"
-                android:text="@string/correct_answers_card"
-                style="@style/RegularText"
                 android:includeFontPadding="false"
+                android:text="@string/correct_answers_card"
+                android:textColor="@color/colorCard_Txt"
                 android:textSize="@dimen/card_txt_size"
-                />
+                app:layout_constraintEnd_toEndOf="@+id/card_tittle"
+                app:layout_constraintStart_toStartOf="@+id/card_tittle"
+                app:layout_constraintTop_toBottomOf="@+id/card_tittle" />
 
 
             <TextView
                 android:id="@+id/card_score"
+                style="@style/Bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/corr_answer"
-                android:textSize="@dimen/card_txt_size"
                 android:layout_marginTop="@dimen/card_txt_percent_marginTop"
+                android:text="@string/corr_answer"
                 android:textColor="@color/colorCard_Txt"
-               style="@style/Bold"
-                app:layout_constraintTop_toBottomOf="@+id/card_correct_answer"
+                android:textSize="@dimen/card_txt_size"
+                app:layout_constraintEnd_toEndOf="@id/card_correct_answer"
                 app:layout_constraintStart_toStartOf="@+id/card_correct_answer"
-                app:layout_constraintEnd_toEndOf="@id/card_correct_answer"/>
+                app:layout_constraintTop_toBottomOf="@+id/card_correct_answer" />
 
             <TextView
                 android:id="@+id/card_result"
+                style="@style/RegularText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/result_card"
-                android:textSize="@dimen/card_txt_size"
-                style="@style/RegularText"
-                android:includeFontPadding="false"
-                android:textColor="@color/colorCard_Txt"
-                app:layout_constraintTop_toBottomOf="@+id/card_tittle"
-                app:layout_constraintStart_toEndOf="@id/card_correct_answer"
                 android:layout_marginTop="@dimen/card_corr_answer_marginTop"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                android:includeFontPadding="false"
+                android:text="@string/result_card"
+                android:textColor="@color/colorCard_Txt"
+                android:textSize="@dimen/card_txt_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/card_correct_answer"
+                app:layout_constraintTop_toBottomOf="@+id/card_tittle" />
 
             <TextView
                 android:id="@+id/card_result_percent"
+                style="@style/Bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/card_result"
-                app:layout_constraintStart_toStartOf="@+id/card_result"
-                app:layout_constraintEnd_toEndOf="@+id/card_result"
-                android:text="@string/fifty"
-                android:textSize="@dimen/card_txt_size"
-                android:textColor="@color/colorCard_Txt"
                 android:layout_marginTop="@dimen/card_txt_percent_marginTop"
-                style="@style/Bold"/>
-
+                android:text="@string/fifty"
+                android:textColor="@color/colorCard_Txt"
+                android:textSize="@dimen/card_txt_size"
+                app:layout_constraintEnd_toEndOf="@+id/card_result"
+                app:layout_constraintStart_toStartOf="@+id/card_result"
+                app:layout_constraintTop_toBottomOf="@+id/card_result" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -156,15 +166,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_btn_finish"
+        android:onClick="onClickFinish"
         android:text="@string/finish"
         android:textColor="@color/colorWhite"
         android:textSize="@dimen/card_btn_txt_size"
         android:textStyle="normal"
-        android:onClick="onClickFinish"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/card_view"
         app:layout_constraintStart_toStartOf="@+id/card_view"
-        app:layout_constraintTop_toBottomOf="@+id/card_view"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/card_view" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

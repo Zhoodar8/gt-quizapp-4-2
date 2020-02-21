@@ -40,6 +40,9 @@
     <string name="leave_feedback">Leave feedback</string>
     <string name="clear_history">Clear history</string>
     <string name="version">v 1.0.0</string>
+    <string name="easy">easy</string>
+    <string name="medium">medium</string>
+    <string name="hard">hard</string>
 
     <string-array name="spinner_diff">
         <item>All</item>

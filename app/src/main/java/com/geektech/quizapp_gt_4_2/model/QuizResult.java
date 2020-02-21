@@ -14,24 +14,27 @@ import java.util.List;
 
 @Entity(tableName = "quiz_result")
 public class QuizResult {
+
+
     @PrimaryKey(autoGenerate = true)
     public int id;
 
-   @ColumnInfo(name = "questions")
-   @TypeConverters({QuestionConverter.class})
+    @ColumnInfo(name = "questions")
+    @TypeConverters({QuestionConverter.class})
     private List<Question> questions;
-   @ColumnInfo(name = "correct_answer")
-   @TypeConverters({QuestionConverter.class})
+    @ColumnInfo(name = "correct_answer")
+    @TypeConverters({QuestionConverter.class})
     private int correctAnswer;
-
-   @ColumnInfo(name = "user_time")
-   @TypeConverters({TimeConverter.class})
+    @ColumnInfo(name = "user_time")
+    @TypeConverters({TimeConverter.class})
     private Date createdAt;
+    @ColumnInfo(name = "category")
     private String category;
+    @ColumnInfo(name = "difficulty")
     private String difficulty;
 
-    public QuizResult(int id, List<Question> questions, int correctAnswer, Date createdAt, String category, String difficulty) {
-        this.id = id;
+    public QuizResult(int id,  List<Question> questions, int correctAnswer, Date createdAt, String category, String difficulty) {
+        this.id =id;
         this.questions = questions;
         this.correctAnswer = correctAnswer;
         this.createdAt = createdAt;

@@ -27,6 +27,10 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizViewHolder> {
         this.list.addAll(list);
         notifyDataSetChanged();
     }
+
+  public List<Question> getmQuestions() {
+        return list;
+    }
     @NonNull
     @Override
     public QuizViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

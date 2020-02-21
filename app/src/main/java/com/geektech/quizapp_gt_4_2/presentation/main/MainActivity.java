@@ -64,6 +64,7 @@ public class MainActivity extends CoreActivity {
                 return false;
             }
         });
+
         mViewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
@@ -78,8 +79,7 @@ public class MainActivity extends CoreActivity {
                         break;
                     case 2:
                         mBottomNavigation.getMenu().findItem(R.id.active).setChecked(true);
-                        break;
-                }
+                        break; }
             }
 
 
@@ -90,10 +90,6 @@ public class MainActivity extends CoreActivity {
         mViewPager = findViewById(R.id.main_view_pager);
         mBottomNavigation = findViewById(R.id.bottom_navigation);
     }
-
-
-
-
 
     private class MainPagerAdapter extends FragmentPagerAdapter {
 
@@ -117,7 +113,6 @@ public class MainActivity extends CoreActivity {
                     fragment = SettingsFragment.newInstance();
                     break;
             }
-
             return fragment;
         }
 
@@ -126,7 +121,6 @@ public class MainActivity extends CoreActivity {
             return 3;
         }
     }
-
 
     @Override
     public void onBackPressed() {

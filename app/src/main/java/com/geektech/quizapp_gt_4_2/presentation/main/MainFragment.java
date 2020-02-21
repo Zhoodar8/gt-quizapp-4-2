@@ -1,8 +1,9 @@
 package com.geektech.quizapp_gt_4_2.presentation.main;
 
-import androidx.lifecycle.Observer;
+
 import androidx.lifecycle.ViewModelProviders;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,7 +11,7 @@ import androidx.annotation.Nullable;
 
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
+
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.Spinner;
@@ -19,7 +20,6 @@ import android.widget.TextView;
 import com.geektech.quizapp_gt_4_2.R;
 import com.geektech.quizapp_gt_4_2.core.CoreFragment;
 import com.geektech.quizapp_gt_4_2.presentation.quiz.QuizActivity;
-import com.geektech.quizapp_gt_4_2.utils.OnSimpleItemSelectedListener;
 import com.geektech.quizapp_gt_4_2.utils.OnSimpleSeekBarChangeListener;
 
 public class MainFragment extends CoreFragment {
@@ -52,6 +52,7 @@ public class MainFragment extends CoreFragment {
         viewsListener();
     }
 
+    @SuppressLint("LongLogTag")
     private void viewsListener() {
         seekBar.setOnSeekBarChangeListener(new OnSimpleSeekBarChangeListener() {
             @Override
@@ -61,18 +62,17 @@ public class MainFragment extends CoreFragment {
             }
         });
 
-        btnStart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int spinnerCategory = 0;
-                getSpinerPosition();
-                if (spinnerCat.getSelectedItemPosition() !=0){
-                    spinnerCategory = spinnerCat.getSelectedItemPosition() + 8;
-                }
-             QuizActivity.start(getActivity(),seekBar.getProgress(), spinnerCategory
-                     ,difficult);
+        btnStart.setOnClickListener(v -> {
+            spinnerDiff.getSelectedItemPosition();
+            int spinnerCategory = 0;
+            if (spinnerCat.getSelectedItemPosition() != 0) {
+                spinnerCategory = spinnerCat.getSelectedItemPosition() + 8;
+                Log.e("-------Spinner Category", spinnerCategory + ""); }
+            QuizActivity.start(getActivity(), seekBar.getProgress(), spinnerCategory
+                    , getDifficult());
+            Log.e("-------SpinnerDifficulty", getDifficult() + "");
 
-            }
+
         });
     }
 
@@ -81,37 +81,26 @@ public class MainFragment extends CoreFragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(getActivity())
                 .get(MainViewModel.class);
-        mViewModel.message.observe(getActivity(), new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                Log.d("ololo", s);
-            }
-        });
-        mViewModel.onLoginClick();
     }
-    private void getSpinerPosition() {
-        spinnerDiff.setOnItemSelectedListener(new OnSimpleItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                super.onItemSelected(parent, view, position, id);
-                switch (position) {
-                    case 1:
-                        difficult = null;
-                        break;
-                    case 2:
-                        difficult = "easy";
-                        break;
-                    case 3:
-                        difficult = "medium";
-                        break;
-                    case 4:
-                        difficult = "hard";
-                        break;
-                }
-            }
-        });
+
+    private String getDifficult() {
+        switch (spinnerDiff.getSelectedItemPosition()) {
+            case 0:
+                difficult = null;
+                break;
+            case 1:
+                difficult = getString(R.string.easy);
+                break;
+            case 2:
+                difficult = getString(R.string.medium);
+                break;
+            case 3:
+                difficult = getString(R.string.hard);
+                break;
+        }
+        return difficult;
     }
 
 
-    }
+}
 

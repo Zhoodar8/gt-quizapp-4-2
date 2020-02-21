@@ -10,14 +10,14 @@
         android:id="@+id/img_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="@dimen/btn_back_marginTop"
         android:layout_marginStart="@dimen/btn_back_marginStart"
-        app:srcCompat="@drawable/ic_button_back"
+        android:layout_marginTop="@dimen/btn_back_marginTop"
         android:onClick="onClickBack"
         android:padding="16dp"
-        />
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_button_back" />
 
 
     <TextView
@@ -29,6 +29,7 @@
         android:text="@string/mythology"
         android:textColor="@color/colorDarkness_purple"
         android:textSize="@dimen/quiz_txt_size"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -41,6 +42,7 @@
         android:layout_height="16dp"
         android:layout_marginTop="@dimen/progress_bar_marginTop"
         android:indeterminate="false"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/quiz_text_tittle"
         app:layout_constraintStart_toStartOf="@+id/quiz_text_tittle"
         app:layout_constraintTop_toBottomOf="@+id/quiz_text_tittle" />
@@ -53,9 +55,26 @@
         android:text="@string/count_question"
         android:textColor="@color/colorBlack"
         android:textSize="@dimen/vh_txt_count_size"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/quiz_progess_bar"
         app:layout_constraintStart_toStartOf="@+id/quiz_progess_bar"
         app:layout_constraintTop_toBottomOf="@+id/quiz_progess_bar" />
+
+    <com.airbnb.lottie.LottieAnimationView
+
+        android:id="@+id/lottie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/ball"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -63,6 +82,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/quiz_recycler_marginTop"
+        android:visibility="invisible"
         app:layout_constraintTop_toBottomOf="@+id/quiz_txt_count" />
 
 
@@ -77,6 +97,7 @@
         android:textColor="@color/colorWhite"
         android:textSize="@dimen/vh_btn_true_false_size"
         android:textStyle="normal"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

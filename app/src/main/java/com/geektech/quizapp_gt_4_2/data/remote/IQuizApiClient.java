@@ -1,4 +1,4 @@
-package com.geektech.quizapp_gt_4_2.data.remote.model;
+package com.geektech.quizapp_gt_4_2.data.remote;
 
 import androidx.lifecycle.MutableLiveData;
 

@@ -11,6 +11,14 @@ public class History {
     private int amount;
     private Date createdAt;
 
+    public History(int id, String difficulty, String category, int correctAnswers, int amount, Date createdAt) {
+        this.id = id;
+        this.difficulty = difficulty;
+        this.category = category;
+        this.correctAnswers = correctAnswers;
+        this.amount = amount;
+        this.createdAt = createdAt;
+    }
 
     public int getId() {
         return id;

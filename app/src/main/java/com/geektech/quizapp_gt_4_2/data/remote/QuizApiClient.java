@@ -1,7 +1,11 @@
-package com.geektech.quizapp_gt_4_2.data.remote.model;
+package com.geektech.quizapp_gt_4_2.data.remote;
 
-import com.geektech.quizapp_gt_4_2.App;
 import com.geektech.quizapp_gt_4_2.core.CoreCallback;
+import com.geektech.quizapp_gt_4_2.data.remote.IQuizApiClient;
+import com.geektech.quizapp_gt_4_2.data.remote.model.QuizCategoryResponse;
+import com.geektech.quizapp_gt_4_2.data.remote.model.QuizGlobalResponse;
+import com.geektech.quizapp_gt_4_2.data.remote.model.QuizQuestinResponse;
+import com.geektech.quizapp_gt_4_2.data.remote.model.QuizQuestionsCount;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;

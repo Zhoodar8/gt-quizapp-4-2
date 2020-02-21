@@ -10,17 +10,24 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.geektech.quizapp_gt_4_2.R;
+import com.geektech.quizapp_gt_4_2.model.History;
 import com.geektech.quizapp_gt_4_2.model.QuizResult;
+import com.geektech.quizapp_gt_4_2.presentation.history.HistoryFragment;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder> {
 
-    ArrayList<QuizResult> list = new ArrayList<>();
+    List<History> list = new ArrayList<>();
+    Listener listener;
 
-    public void update(ArrayList<QuizResult> history) {
-        this.list.clear();
-        this.list.addAll(history);
+    public HistoryAdapter(Listener listener) {
+        this.listener = listener;
+    }
+
+    public void update(List<History> history) {
+        this.list = history;
         notifyDataSetChanged();
     }
 
@@ -40,8 +47,11 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
 
     @Override
     public int getItemCount() {
-        return list.size();
-    }
+        return list.size(); }
+
+  public interface Listener{
+      void onHistoryClick(int position, View view);
+  }
 
 
     public class HistoryViewHolder extends RecyclerView.ViewHolder {
@@ -63,17 +73,17 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
             imgDeleteHistory.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                     //later
-                  //  App.historyStorage.deleteAll();
+                  listener.onHistoryClick(getAdapterPosition(),v);
                 }
             });
 
         }
 
-        public void onBind(QuizResult result) {
-            tvCorrectAnswer.setText(result.getCorrectAnswer());
+        public void onBind(History result) {
+            tvCorrectAnswer.setText(result.getCorrectAnswers() + "/" + result.getAmount());
             tvCategory.setText(result.getCategory());
             tvDifficulty.setText(result.getDifficulty());
+            tvDate.setText(result.getCreatedAt().toString());
 
         }
     }
